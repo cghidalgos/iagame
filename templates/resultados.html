@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Resultados</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-light p-4">
+<div class="container">
+  <!-- Encabezado principal -->
+  <div class="text-center mb-5">
+    <h2>🚀 Resultados de Postulación Espacial</h2>
+    <h3 class="text-muted">{{ datos.nombre }}</h3>
+  </div>
+
+  <!-- Sección de puntuaciones principales -->
+  <div class="row mb-4">
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title">🏆 Puntaje Final</h5>
+          <div class="display-4 text-primary">
+            {{ (datos.puntaje_final * 100) | round(1) }}%
+          </div>
+          <p class="text-muted small">(Combinación de todas las pruebas)</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title">🧠 Prueba de Conocimiento</h5>
+          <div class="display-4 text-success">
+            {{ datos.trivia_puntaje }}/{{ datos.trivia_total }}
+          </div>
+          <div class="progress mt-2">
+            <div class="progress-bar bg-success" 
+                 style="width: {{ (datos.trivia_puntaje/datos.trivia_total)*100 }}%">
+              {{ (datos.trivia_puntaje/datos.trivia_total)*100 | round(1) }}%
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title">⏱ Tiempo Laberinto</h5>
+          <div class="display-4 text-info">
+            {{ datos.laberinto_tiempo | round(1) }}s
+          </div>
+          <div class="progress mt-2">
+            <div class="progress-bar bg-info" 
+                 style="width: {{ (1 - (datos.laberinto_tiempo/120))*100 }}%">
+              Eficiencia: {{ (1 - (datos.laberinto_tiempo/120))*100 | round(1) }}%
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gráfico de habilidades -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title text-center">📊 Distribución de Habilidades</h5>
+      <canvas id="graficoHabilidades" height="150"></canvas>
+    </div>
+  </div>
+
+  <!-- Detalles de evaluación -->
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">🎯 Mejor Habilidad</h5>
+          <div class="alert alert-success">
+            <strong>{{ datos.mejor_habilidad }}</strong>
+            <p class="mb-0">Destacaste en esta habilidad entre todas las evaluadas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">📝 Evaluación Detallada</h5>
+          <ul class="list-group">
+            {% for habilidad, (valor, mensaje) in evaluaciones.items() %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              {{ habilidad.replace("_", " ").capitalize() }}
+              <span class="badge badge-primary badge-pill">{{ valor }}</span>
+              <span class="ml-2">{{ mensaje }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desglose de ponderaciones -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title text-center">🔍 Composición del Puntaje Final</h5>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <h6>Formulario de Habilidades</h6>
+          <div class="display-4 text-primary">50%</div>
+          <p class="small">{{ (datos.probabilidad * 100) | round(1) }}% original</p>
+        </div>
+        <div class="col-md-4">
+          <h6>Prueba de Conocimiento</h6>
+          <div class="display-4 text-success">30%</div>
+          <p class="small">{{ datos.trivia_puntaje }} respuestas correctas</p>
+        </div>
+        <div class="col-md-4">
+          <h6>Eficiencia en Laberinto</h6>
+          <div class="display-4 text-info">20%</div>
+          <p class="small">{{ datos.laberinto_tiempo | round(1) }} segundos</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="/" class="btn btn-secondary btn-block mt-4">⬅ Volver al Inicio</a>
+</div>
+
+<script>
+  // Configuración del gráfico de habilidades
+  const ctx = document.getElementById('graficoHabilidades').getContext('2d');
+  const habilidadesLabels = {{ evaluaciones.keys() | list | map('replace', '_', ' ') | map('capitalize') | list | tojson }};
+  const habilidadesValores = {{ evaluaciones.values() | map(attribute=0) | list | tojson }};
+
+  new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: habilidadesLabels,
+      datasets: [{
+        label: 'Nivel de Habilidad',
+        data: habilidadesValores,
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+        pointBorderColor: '#fff',
+      }]
+    },
+    options: {
+      scale: {
+        ticks: {
+          beginAtZero: true,
+          max: 10
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

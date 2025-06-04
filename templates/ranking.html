@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Ranking</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .grafico-container {
+      position: relative;
+      height: 400px;
+      margin: 20px auto;
+    }
+    canvas {
+      max-width: 100%;
+    }
+    .tabla-ranking td, .tabla-ranking th {
+      vertical-align: middle;
+    }
+    .stats-box {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body class="bg-light p-4">
+<div class="container">
+  <h2 class="text-center mb-4">🏆 Top 10 - Machine Learning Engineers</h2>
+  
+  <!-- Tabla de ranking -->
+  <div class="table-responsive">
+    <table class="table table-striped tabla-ranking">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Puntaje Final</th>
+          <th>Trivia</th>
+          <th>Laberinto</th>
+          <th>Mejor habilidad</th>
+          <th>Detalles</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for u in usuarios %}
+        <tr>
+          <td>{{ u.nombre }}</td>
+          <td>{{ (u.puntaje_final * 100) | round(1) }}%</td>
+          <td>{{ u.trivia_puntaje }}/{{ u.trivia_total }}</td>
+          <td>{{ u.laberinto_tiempo | round(1) }}s</td>
+          <td>{{ u.mejor_habilidad }}</td>
+          <td>
+            <button class="btn btn-sm btn-info" 
+                    type="button" 
+                    data-toggle="collapse" 
+                    data-target="#detalles{{ loop.index }}">
+              Ver habilidades
+            </button>
+          </td>
+        </tr>
+        <tr class="collapse" id="detalles{{ loop.index }}">
+          <td colspan="6">
+            <ul class="list-group">
+              {% for habilidad, (valor, mensaje) in u.evaluaciones.items() %}
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ habilidad.replace("_", " ").capitalize() }}
+                <span class="badge badge-primary badge-pill">{{ valor }}</span>
+                <span class="ml-2">{{ mensaje }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Gráfico Top10 -->
+  <div class="stats-box">
+    <h5 class="text-center mb-4">📊 Comparativa de Puntajes, Trivia y Laberinto (Top 10)</h5>
+    <div class="grafico-container">
+      <canvas id="graficoTop5"></canvas>
+    </div>
+  </div>
+
+  <!-- Gráfica Mejor Habilidad -->
+  <div class="stats-box">
+    <h5 class="text-center mb-4">🏅 Distribución de Mejor Habilidad</h5>
+    <div class="grafico-container">
+      <canvas id="graficoMejorHabilidad"></canvas>
+    </div>
+  </div>
+
+  <!-- Estadísticas -->
+  <div class="stats-box">
+    <h5 class="text-center mb-3">📈 Estadísticas Generales</h5>
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Promedio general
+        <span class="badge badge-primary badge-pill">{{ (promedio * 100) | round(1) }}%</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Mejor puntaje
+        <span class="badge badge-success badge-pill">{{ (mejor * 100) | round(1) }}%</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Peor puntaje
+        <span class="badge badge-danger badge-pill">{{ (peor * 100) | round(1) }}%</span>
+      </li>
+    </ul>
+  </div>
+
+  <a href="/" class="btn btn-secondary btn-block mt-4">⬅ Volver al inicio</a>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+  // Datos para el gráfico Top10
+  const nombresTop10 = {{ usuarios | map(attribute='nombre') | list | tojson }};
+  const puntajesTop10 = {{ usuarios | map(attribute='puntaje_final') | map('float') | list | tojson }};
+  const triviaTop10 = {{ usuarios | map(attribute='trivia_puntaje') | list | tojson }};
+  const triviaTotal = {{ usuarios[0].trivia_total if usuarios else 5 }};
+  const triviaPorcTop10 = triviaTop10.map(p => (p / triviaTotal * 100).toFixed(1));
+  const laberintoTop10 = {{ usuarios | map(attribute='laberinto_tiempo') | list | tojson }};
+
+  new Chart(document.getElementById('graficoTop5'), {
+    type: 'bar',
+    data: {
+      labels: nombresTop10,
+      datasets: [
+        {
+          label: 'Puntaje Final (%)',
+          data: puntajesTop10.map(p => (p * 100).toFixed(1)),
+          backgroundColor: 'rgba(54, 162, 235, 0.8)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 2,
+          yAxisID: 'y'
+        },
+        {
+          label: 'Trivia (%)',
+          data: triviaPorcTop10,
+          backgroundColor: 'rgba(40, 167, 69, 0.7)',
+          borderColor: 'rgba(40, 167, 69, 1)',
+          borderWidth: 2,
+          yAxisID: 'y'
+        },
+        {
+          label: 'Tiempo Laberinto (s)',
+          data: laberintoTop10,
+          backgroundColor: 'rgba(255, 159, 64, 0.7)',
+          borderColor: 'rgba(255, 159, 64, 1)',
+          borderWidth: 2,
+          type: 'line',
+          yAxisID: 'y2'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 100,
+          title: {
+            display: true,
+            text: 'Porcentaje (%)'
+          }
+        },
+        y2: {
+          position: 'right',
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Tiempo (segundos)'
+          },
+          grid: {
+            drawOnChartArea: false
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          position: 'top'
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false
+        }
+      }
+    }
+  });
+
+  // Gráfica de barras de mejor habilidad
+  const labelsHabilidades = {{ labels_habilidades | tojson }};
+  const valoresHabilidades = {{ valores_habilidades | tojson }};
+
+  new Chart(document.getElementById('graficoMejorHabilidad'), {
+  type: 'bar',
+  data: {
+    labels: labelsHabilidades,
+    datasets: [{
+      label: 'Cantidad de usuarios',
+      data: valoresHabilidades,
+      backgroundColor: [
+        'rgba(54, 162, 235, 0.8)',  // azul
+        'rgba(40, 167, 69, 0.7)',   // verde
+        'rgba(255, 159, 64, 0.7)',  // naranja
+        'rgba(54, 162, 235, 0.8)',  // azul (repite si hay más barras)
+        'rgba(40, 167, 69, 0.7)',
+        'rgba(255, 159, 64, 0.7)'
+      ],
+      borderColor: [
+        'rgba(54, 162, 235, 1)',
+        'rgba(40, 167, 69, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(40, 167, 69, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        beginAtZero: true,
+        precision: 0,
+        title: {
+          display: true,
+          text: 'Cantidad'
+        }
+      }
+    },
+    plugins: {
+      legend: { display: false }
+    }
+  }
+});
+
+</script>
+</body>
+</html>

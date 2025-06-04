@@ -1,0 +1,100 @@
+[
+    {
+        "edad": 16,
+        "promedio": 4.0,
+        "deportes": 6,
+        "liderazgo": 4,
+        "club_ciencia": 4,
+        "ingles": 7,
+        "condicion_fisica": 5,
+        "trabajo_equipo": 5,
+        "idiomas": 2,
+        "creatividad": 10,
+        "puntaje_final": 0.3647026706903758,
+        "nombre": "carlos giovanny hidalgo suarez",
+        "probabilidad": 0.41173867471408493,
+        "trivia_puntaje": 0,
+        "trivia_total": 5,
+        "laberinto_tiempo": 24.7,
+        "evaluaciones": {
+            "liderazgo": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "club_ciencia": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "ingles": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "condicion_fisica": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "trabajo_equipo": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "idiomas": [
+                2,
+                "🟢 Alto - excelente"
+            ],
+            "creatividad": [
+                10,
+                "🟢 Alto - excelente"
+            ]
+        },
+        "mejor_habilidad": "Creatividad"
+    },
+    {
+        "edad": 16,
+        "promedio": 5.0,
+        "deportes": 10,
+        "liderazgo": 10,
+        "club_ciencia": 10,
+        "ingles": 10,
+        "condicion_fisica": 10,
+        "trabajo_equipo": 10,
+        "idiomas": 2,
+        "creatividad": 10,
+        "puntaje_final": 0.651575400171538,
+        "nombre": "juan carlos",
+        "probabilidad": 0.368150800343076,
+        "trivia_puntaje": 10,
+        "trivia_total": 10,
+        "laberinto_tiempo": 19.5,
+        "evaluaciones": {
+            "liderazgo": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "club_ciencia": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "ingles": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "condicion_fisica": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "trabajo_equipo": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "idiomas": [
+                2,
+                "🟢 Alto - excelente"
+            ],
+            "creatividad": [
+                10,
+                "🟢 Alto - excelente"
+            ]
+        },
+        "mejor_habilidad": "Liderazgo"
+    }
+]

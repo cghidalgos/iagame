@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Laberinto de IA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+      color: #e0e0e0;
+      font-family: 'Orbitron', sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .ai-bg {
+      background: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      opacity: 0.18;
+      z-index: 0;
+      pointer-events: none;
+      filter: blur(2px) brightness(0.7);
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+    }
+    h2 {
+      font-size: 2.3rem;
+      margin-top: 2rem;
+      color: #00ffe7;
+      text-shadow: 0 0 12px #00ffe7, 0 0 2px #0ff;
+      letter-spacing: 2px;
+    }
+    #laberintoContainer {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      min-height: 60vw;
+      min-height: 60vh;
+      max-height: 90vh;
+    }
+    #laberinto {
+      display: grid;
+      grid-template-columns: repeat(15, 1fr);
+      grid-template-rows: repeat(15, 1fr);
+      gap: 1px;
+      width: min(90vw, 90vh, 450px);
+      height: min(90vw, 90vh, 450px);
+      max-width: 450px;
+      max-height: 450px;
+      background: #101a23;
+      box-shadow: 0 0 32px #00ffe7;
+      border-radius: 16px;
+      box-sizing: border-box;
+      transition: transform 2s;
+    }
+    .celda {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1/1;
+      background: #1a2a3a;
+      border-radius: 6px;
+      box-shadow: 0 0 2px #00ffe7;
+      transition: background 0.2s;
+    }
+    .pared {
+      background: linear-gradient(135deg, #232526 0%, #414345 100%);
+      box-shadow: 0 0 6px #222;
+    }
+    .nave {
+      background: radial-gradient(circle at 60% 40%, #00ffe7 60%, #0099ff 100%);
+      box-shadow: 0 0 18px #00ffe7;
+      border: 2px solid #fff;
+      position: relative;
+    }
+    .nave::after {
+      content: "🤖";
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.3rem;
+      filter: drop-shadow(0 0 5px #00ffe7);
+    }
+    .meta {
+      background: linear-gradient(135deg, #ffe600 0%, #fff700 100%);
+      box-shadow: 0 0 18px #ffe600;
+      position: relative;
+    }
+    .meta::after {
+      content: "⚡";
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.3rem;
+      filter: drop-shadow(0 0 5px #ffe600);
+    }
+    .touch-controls {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+      user-select: none;
+      transition: transform 2s;
+    }
+    .touch-controls-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      pointer-events: auto;
+    }
+    .touch-btn-row {
+      display: flex;
+      gap: 24px;
+    }
+    .touch-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      font-size: 2rem;
+      background: linear-gradient(135deg, #00ffe7 0%, #0099ff 100%);
+      border: none;
+      color: #212121;
+      box-shadow: 0 0 15px #00ffe7;
+      touch-action: manipulation;
+      outline: none;
+      opacity: 0.8;
+      transition: background 0.2s, opacity 0.2s;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .touch-btn:active {
+      background: linear-gradient(135deg, #0099ff 0%, #00ffe7 100%);
+      opacity: 1;
+    }
+    .info-modal-bg {
+      position: fixed;
+      z-index: 200;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .info-modal {
+      background: #18263a;
+      border-radius: 18px;
+      padding: 32px 24px;
+      max-width: 400px;
+      box-shadow: 0 0 32px #00ffe7;
+      text-align: left;
+      color: #e0e0e0;
+      border: 2px solid #00ffe7;
+    }
+    .info-modal h4 {
+      font-weight: bold;
+      color: #00ffe7;
+      text-shadow: 0 0 8px #00ffe7;
+    }
+    .info-modal ul {
+      margin-left: 1.2em;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #00ffe7 0%, #0099ff 100%);
+      color: #212121;
+      border: none;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      box-shadow: 0 0 15px #00ffe7;
+      border-radius: 30px;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #0099ff 0%, #00ffe7 100%);
+      box-shadow: 0 0 30px #00ffe7;
+    }
+    .btn-success {
+      background: linear-gradient(90deg, #1de9b6 0%, #43a047 100%);
+      color: #fff;
+      border: none;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      box-shadow: 0 0 15px #1de9b6;
+      border-radius: 30px;
+    }
+    .btn-success:hover {
+      background: linear-gradient(90deg, #43a047 0%, #1de9b6 100%);
+      box-shadow: 0 0 30px #1de9b6;
+    }
+    @media (min-width: 600px) {
+      .touch-controls { top: 55%; }
+    }
+    @media (hover: none) {
+      .touch-controls { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <div class="ai-bg"></div>
+  <div class="container text-center">
+    <h2>🤖 Laberinto de Inteligencia Artificial</h2>
+    <div id="laberintoContainer">
+      <div id="laberinto" style="opacity:0.5;pointer-events:none;"></div>
+      <div class="touch-controls" id="touchControls" style="opacity:0.5;pointer-events:none;">
+        <div class="touch-controls-inner" id="touchInner">
+          <button class="touch-btn" id="btnUp" aria-label="Arriba">↑</button>
+          <div class="touch-btn-row">
+            <button class="touch-btn" id="btnLeft" aria-label="Izquierda">←</button>
+            <button class="touch-btn" id="btnRight" aria-label="Derecha">→</button>
+          </div>
+          <button class="touch-btn" id="btnDown" aria-label="Abajo">↓</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-modal-bg" id="modalInfo">
+      <div class="info-modal">
+        <h4>¿Cómo jugar?</h4>
+        <ul>
+          <li>Usa las <b>flechas</b> para mover el robot 🤖.</li>
+          <li>En móvil, usa los <b>botones táctiles</b> (flechas grandes).</li>
+          <li>¡El tablero gira cada 5 segundos! Los controles táctiles también rotan para coincidir.</li>
+          <li>Llega a la casilla de energía ⚡ lo más rápido posible.</li>
+        </ul>
+        <button class="btn btn-primary btn-block mt-3" id="btnEmpezar">Comenzar</button>
+      </div>
+    </div>
+
+    <form id="form" method="POST" style="display: none;">
+      <input type="hidden" name="tiempo" id="tiempo">
+      <button class="btn btn-success mt-3" type="submit">¡Continuar!</button>
+    </form>
+  </div>
+
+  <script>
+    const mapa = [
+      [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+      [1,1,1,1,0,1,1,1,1,1,0,1,1,1,0],
+      [0,0,0,1,0,1,0,0,0,1,0,0,0,1,0],
+      [0,1,0,1,1,1,0,1,1,1,0,1,0,1,0],
+      [0,1,0,0,0,0,0,1,0,0,0,1,0,1,0],
+      [0,1,1,1,1,1,1,1,0,1,1,1,0,1,0],
+      [0,0,0,0,0,0,0,1,0,0,0,0,0,1,0],
+      [0,1,1,1,1,1,1,1,1,1,1,1,0,1,0],
+      [0,1,0,0,0,1,1,0,0,0,1,1,0,1,0],
+      [0,1,1,1,0,1,1,1,1,1,0,1,1,1,0],
+      [0,0,0,1,0,0,1,0,0,1,0,0,0,0,0],
+      [0,1,1,1,1,1,1,1,0,1,1,1,1,1,0],
+      [0,1,0,0,0,0,0,1,0,0,0,0,0,1,0],
+      [0,1,1,1,1,1,0,1,1,1,1,1,0,1,0],
+      [0,0,0,0,0,1,1,1,0,0,0,1,1,1,2]
+    ];
+    let posX = 0, posY = 0;
+    const laberinto = document.getElementById('laberinto');
+    let startTime = null;
+    let currentRotation = 0;
+    let intervalRotar = null;
+    let isStarted = false;
+    function mover(dx, dy) {
+      if (!isStarted) return;
+      let realDx = dx;
+      let realDy = dy;
+      switch (currentRotation % 360) {
+        case 90:
+          realDx = -dy;
+          realDy = dx;
+          break;
+        case 180:
+          realDx = -dx;
+          realDy = -dy;
+          break;
+        case 270:
+        case -90:
+          realDx = dy;
+          realDy = -dx;
+          break;
+      }
+      const nuevoX = posX + realDx;
+      const nuevoY = posY + realDy;
+      if (
+        nuevoX >= 0 && nuevoY >= 0 &&
+        nuevoY < mapa.length && nuevoX < mapa[0].length &&
+        mapa[nuevoY][nuevoX] !== 0
+      ) {
+        posX = nuevoX;
+        posY = nuevoY;
+        dibujarLaberinto();
+        if (mapa[posY][posX] === 2) {
+          const tiempo = ((Date.now() - startTime) / 1000).toFixed(1);
+          document.getElementById('tiempo').value = tiempo;
+          document.getElementById('form').style.display = 'block';
+          detenerJuego();
+        }
+      }
+    }
+
+    function dibujarLaberinto() {
+      laberinto.innerHTML = '';
+      for (let y = 0; y < mapa.length; y++) {
+        for (let x = 0; x < mapa[y].length; x++) {
+          const celda = document.createElement('div');
+          celda.classList.add('celda');
+          if (mapa[y][x] === 0) celda.classList.add('pared');
+          if (mapa[y][x] === 2) celda.classList.add('meta');
+          if (x === posX && y === posY) celda.classList.add('nave');
+          laberinto.appendChild(celda);
+        }
+      }
+    }
+
+    function iniciarJuego() {
+      isStarted = true;
+      startTime = Date.now();
+      document.getElementById('modalInfo').style.display = "none";
+      laberinto.style.opacity = "1";
+      laberinto.style.pointerEvents = "auto";
+      document.getElementById('touchControls').style.opacity = "0.8";
+      document.getElementById('touchControls').style.pointerEvents = "auto";
+      dibujarLaberinto();
+      intervalRotar = setInterval(rotarLaberinto, 5000);
+    }
+
+    function detenerJuego() {
+      isStarted = false;
+      clearInterval(intervalRotar);
+    }
+
+    function rotarLaberinto() {
+      currentRotation = (currentRotation + 90) % 360;
+      laberinto.style.transform = `rotate(${currentRotation}deg)`;
+      document.getElementById('touchInner').style.transform = `rotate(${-currentRotation}deg)`;
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (!isStarted) return;
+      switch(e.key) {
+        case 'ArrowUp': mover(0, -1); break;
+        case 'ArrowDown': mover(0, 1); break;
+        case 'ArrowLeft': mover(-1, 0); break;
+        case 'ArrowRight': mover(1, 0); break;
+      }
+    });
+
+    function addTouch(btnId, dx, dy) {
+      const btn = document.getElementById(btnId);
+      btn.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        mover(dx, dy);
+      });
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        mover(dx, dy);
+      });
+    }
+    addTouch('btnUp', 0, -1);
+    addTouch('btnDown', 0, 1);
+    addTouch('btnLeft', -1, 0);
+    addTouch('btnRight', 1, 0);
+
+    document.getElementById('btnEmpezar').onclick = iniciarJuego;
+
+    dibujarLaberinto();
+    laberinto.style.opacity = "0.5";
+    laberinto.style.pointerEvents = "none";
+    document.getElementById('touchControls').style.opacity = "0.5";
+    document.getElementById('touchControls').style.pointerEvents = "none";
+  </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Formulario de IA</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Tipografía futurista -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+      color: #e0e0e0;
+      font-family: 'Orbitron', sans-serif;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .ai-bg {
+      background: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      opacity: 0.18;
+      z-index: 0;
+      pointer-events: none;
+      filter: blur(2px) brightness(0.7);
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 540px;
+      margin: 0 auto;
+      margin-top: 40px;
+      background: rgba(18, 32, 48, 0.93);
+      border-radius: 16px;
+      box-shadow: 0 0 32px #00ffe7;
+      padding: 32px 24px 24px 24px;
+    }
+    h2 {
+      color: #00ffe7;
+      text-shadow: 0 0 12px #00ffe7, 0 0 2px #0ff;
+      letter-spacing: 2px;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+    }
+    label {
+      color: #00ffe7;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .form-control {
+      background: #1a2a3a;
+      border: 1.5px solid #00ffe7;
+      color: #e0e0e0;
+      border-radius: 8px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.08rem;
+      box-shadow: 0 0 8px #00ffe722;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+    .form-control:focus {
+      border-color: #00ffe7;
+      box-shadow: 0 0 16px #00ffe7;
+      background: #212e3a;
+      color: #fff;
+    }
+    .form-text {
+      color: #1de9b6;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+      text-shadow: 0 0 4px #1de9b6;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #00ffe7 0%, #0099ff 100%);
+      color: #212121;
+      border: none;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      font-size: 1.15rem;
+      box-shadow: 0 0 15px #00ffe7;
+      border-radius: 30px;
+      margin-top: 1.5rem;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #0099ff 0%, #00ffe7 100%);
+      box-shadow: 0 0 30px #00ffe7;
+    }
+    .btn-link {
+      color: #00ffe7;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-shadow: 0 0 8px #00ffe7;
+      margin-top: 1.5rem;
+      transition: color 0.2s;
+    }
+    .btn-link:hover {
+      color: #1de9b6;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="ai-bg"></div>
+  <div class="container">
+    <h2 class="mb-4 text-center">🤖 Formulario de Postulación IA</h2>
+    <form action="/procesar" method="post">
+      {% set campos = [
+        ('nombre', 'text', '', '', '', 'Nombre completo del postulante.', 'Ej: Juan Pérez'),
+        ('edad', 'number', '', '12', '30', 'Edad entre 12 y 30 años.', 'Ej: 16'),
+        ('promedio', 'number', '0.1', '0', '5', 'Promedio académico entre 0 y 5.', 'Ej: 4'),
+        ('deportes', 'number', '', '1', '10', 'Habilidad en deportes entre 0 y 10.', 'Ej: 2'),
+        ('liderazgo', 'number', '', '1', '10', 'Habilidad de liderar equipos entre 0 y 10.', 'Ej: 1'),
+        ('club_ciencia', 'number', '', '1', '10', 'Habilidad en proyectos ciencia entre 0 y 10.', 'Ej: 6'),
+        ('ingles', 'number', '', '1', '10', 'Nivel de inglés del 1 (básico) al 10 (avanzado).', 'Ej: 7'),
+        ('condicion_fisica', 'number', '', '1', '10', 'Condición física del 1 al 10.', 'Ej: 6'),
+        ('trabajo_equipo', 'number', '', '1', '10', 'Habilidad para trabajar en equipo del 1 al 10.', 'Ej: 8'),
+        ('idiomas', 'number', '', '', '', 'Número de idiomas que domina.', 'Ej: 3'),
+        ('creatividad', 'number', '', '1', '10', 'Nivel de creatividad del 1 al 10.', 'Ej: 9')
+      ] %}
+
+      {% for campo, tipo, paso, min, max, descripcion, ejemplo in campos %}
+        <div class="form-group">
+          <label for="{{ campo }}">{{ campo.replace('_', ' ').capitalize() }}:</label>
+          <small class="form-text">{{ descripcion }}</small>
+          <input class="form-control"
+                 name="{{ campo }}"
+                 id="{{ campo }}"
+                 type="{{ tipo }}"
+                 step="{{ paso if paso else 'any' }}"
+                 min="{{ min }}"
+                 max="{{ max }}"
+                 placeholder="{{ ejemplo }}"
+                 required>
+        </div>
+      {% endfor %}
+
+      <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+    </form>
+    <a href="/" class="btn btn-link mt-3">⬅ Volver</a>
+  </div>
+</body>
+</html>
