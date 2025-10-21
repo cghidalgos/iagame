@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Login - IA Career Profiler</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      color: #222;
+      font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-box {
+      background: rgba(255,255,255,0.97);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(60, 60, 120, 0.13);
+      padding: 40px 32px;
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+    }
+    .login-box h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #667eea;
+    }
+    .login-box p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+    .form-control {
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 1rem;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      padding: 12px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      width: 100%;
+      margin-top: 20px;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #764ba2 0%, #667eea 100%);
+    }
+    .btn-secondary {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  {% include 'partials/loader.html' %}
+  <div class="login-box">
+    <h1>Iniciar Sesión</h1>
+    <p>Ingresa tu nombre para guardar tu progreso y ver tu historial</p>
+    
+    <form method="POST">
+      <div class="form-group text-left">
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" 
+               class="form-control" 
+               id="username" 
+               name="username" 
+               placeholder="Ej: María García" 
+               required 
+               minlength="3">
+        <small class="form-text text-muted">
+          Si ya jugaste antes, usa el mismo nombre para ver tu historial
+        </small>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Continuar</button>
+    </form>
+    
+    <a href="/" class="btn btn-secondary btn-sm mt-3">⬅ Volver al inicio</a>
+    
+    <div class="mt-4 pt-4 border-top">
+      <p class="small text-muted mb-2">💡 <strong>Beneficios de iniciar sesión:</strong></p>
+      <ul class="text-left small text-muted">
+        <li>Guarda múltiples intentos</li>
+        <li>Ve tu progreso histórico</li>
+        <li>Compara tus mejoras</li>
+        <li>Accede a recomendaciones personalizadas</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

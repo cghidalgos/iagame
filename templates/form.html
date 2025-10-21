@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Formulario de Evaluación IA</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      min-height: 100vh;
+      padding: 20px 0;
+    }
+    .container {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 700px;
+    }
+    h2 {
+      color: #667eea;
+      margin-bottom: 25px;
+    }
+    .form-group label {
+      font-weight: 600;
+      color: #333;
+    }
+    .form-control {
+      border-radius: 8px;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      padding: 12px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #764ba2 0%, #667eea 100%);
+    }
+  </style>
+</head>
+<body class="p-4">
+  {% include 'partials/loader.html' %}
+  <div class="container">
+    <h2 class="text-center">Formulario de Evaluación en IA</h2>
+    <p class="text-center text-muted mb-4">Evalúa tus habilidades en Inteligencia Artificial del 1 al 10</p>
+    <form action="/procesar" method="post">
+      {% set campos = [
+        ('nombre', 'text', '', '', '', 'Nombre completo del participante.', 'Ej: María García'),
+        ('edad', 'number', '', '12', '30', 'Edad entre 12 y 30 años.', 'Ej: 20'),
+        ('promedio', 'number', '0.1', '0', '5', 'Promedio académico entre 0 y 5.', 'Ej: 4.2'),
+        ('programacion', 'number', '', '1', '10', 'Habilidad en programación (Python, R, etc.) del 1 al 10.', 'Ej: 8'),
+        ('matematicas', 'number', '', '1', '10', 'Conocimiento en matemáticas y estadística del 1 al 10.', 'Ej: 7'),
+        ('analisis_datos', 'number', '', '1', '10', 'Capacidad de análisis de datos del 1 al 10.', 'Ej: 6'),
+        ('ingles', 'number', '', '1', '10', 'Nivel de inglés técnico del 1 al 10.', 'Ej: 7'),
+        ('resolucion_problemas', 'number', '', '1', '10', 'Habilidad para resolver problemas complejos del 1 al 10.', 'Ej: 8'),
+        ('trabajo_equipo', 'number', '', '1', '10', 'Habilidad para trabajar en equipo del 1 al 10.', 'Ej: 9'),
+        ('comunicacion', 'number', '', '1', '10', 'Capacidad de comunicación y presentación del 1 al 10.', 'Ej: 7'),
+        ('creatividad', 'number', '', '1', '10', 'Nivel de creatividad e innovación del 1 al 10.', 'Ej: 8')
+      ] %}
+
+      {% for campo, tipo, paso, min, max, descripcion, ejemplo in campos %}
+        <div class="form-group">
+          <label for="{{ campo }}">{{ campo.replace('_', ' ').capitalize() }}:</label>
+          <small class="form-text text-muted">{{ descripcion }}</small>
+          <input class="form-control"
+                 name="{{ campo }}"
+                 id="{{ campo }}"
+                 type="{{ tipo }}"
+                 step="{{ paso if paso else 'any' }}"
+                 min="{{ min }}"
+                 max="{{ max }}"
+                 placeholder="{{ ejemplo }}"
+                 required>
+        </div>
+      {% endfor %}
+
+      <button type="submit" class="btn btn-primary btn-block">Enviar Evaluación</button>
+    </form>
+    <a href="/" class="btn btn-link mt-3">⬅ Volver</a>
+  </div>
+</body>
+</html>

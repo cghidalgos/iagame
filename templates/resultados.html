@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Resultados - Perfil en IA</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      min-height: 100vh;
+      padding: 20px 0;
+    }
+    .container {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    h2, h3 {
+      color: #667eea;
+    }
+  </style>
+</head>
+<body class="p-4">
+{% include 'partials/loader.html' %}
+<div class="container">
+  <!-- Encabezado principal -->
+  <div class="text-center mb-5">
+    <h2>Resultados de Evaluación en IA</h2>
+    <h3 class="text-muted">{{ datos.nombre }}</h3>
+  </div>
+
+  <!-- Sección de puntuaciones principales -->
+  <div class="row mb-4">
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title">🏆 Puntaje Final</h5>
+          <div class="display-4 text-primary">
+            {{ (datos.puntaje_final * 100) | round(1) }}%
+          </div>
+          <p class="text-muted small">(Combinación de todas las pruebas)</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title">🧠 Prueba de Conocimiento</h5>
+          <div class="display-4 text-success">
+            {{ datos.trivia_puntaje }}/{{ datos.trivia_total }}
+          </div>
+          <div class="progress mt-2">
+            <div class="progress-bar bg-success" 
+                 style="width: {{ porcentajes.trivia }}%">
+              {{ porcentajes.trivia | round(1) }}%
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title">⏱ Tiempo Robot</h5>
+          <div class="display-4 text-info">
+            {{ datos.laberinto_tiempo | round(1) }}s
+          </div>
+          <div class="progress mt-2">
+            <div class="progress-bar bg-info" 
+                 style="width: {{ porcentajes.laberinto }}%">
+              Eficiencia: {{ porcentajes.laberinto | round(1) }}%
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Perfil sugerido y Áreas de mejora -->
+  <div class="row mb-4">
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">🧭 Perfil sugerido</h5>
+          <div class="alert alert-primary mb-3">
+            <h4 class="mb-0"><strong>{{ datos.tipo_ingeniero }}</strong></h4>
+          </div>
+          <p class="mb-0 text-muted">Mejor habilidad destacada: <strong>{{ datos.mejor_habilidad }}</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">🛠️ Áreas de mejora</h5>
+          {% if datos.mejoras and datos.mejoras|length > 0 %}
+          <ul class="list-group">
+            {% for m in datos.mejoras %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span><strong>{{ m.area }}</strong></span>
+              <span class="ml-3 text-muted">{{ m.detalle }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <div class="alert alert-success mb-0">¡Excelente! No se detectan áreas críticas de mejora.</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gráfico de habilidades -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title text-center">📊 Distribución de Habilidades</h5>
+      <canvas id="graficoHabilidades" height="150"></canvas>
+    </div>
+  </div>
+
+  <!-- Gráfico de composición de puntaje -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title text-center">Componentes del Puntaje (25% c/u)</h5>
+      <canvas id="graficoComponentes" height="120"></canvas>
+    </div>
+  </div>
+
+  <!-- Detalles de evaluación -->
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">🎯 Mejor Habilidad</h5>
+          <div class="alert alert-success">
+            <strong>{{ datos.mejor_habilidad }}</strong>
+            <p class="mb-0">Destacaste en esta habilidad entre todas las evaluadas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">📝 Evaluación Detallada</h5>
+          <ul class="list-group">
+            {% for habilidad, (valor, mensaje) in evaluaciones.items() %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              {{ habilidad.replace("_", " ").capitalize() }}
+              <span class="badge badge-primary badge-pill">{{ valor }}</span>
+              <span class="ml-2">{{ mensaje }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desglose de ponderaciones (25% cada uno) -->
+  <div class="card mb-4">
+    <div class="card-body">
+            <h5 class="card-title text-center">Composición del Puntaje Final (25% cada uno)</h5>
+      <div class="row text-center">
+        <div class="col-md-3 mb-3">
+          <h6>Historia de la IA</h6>
+          <div class="display-4 text-success">{{ porcentajes.trivia | round(1) }}%</div>
+          <p class="small">{{ datos.trivia_puntaje }} de {{ datos.trivia_total }} correctas</p>
+        </div>
+        <div class="col-md-3 mb-3">
+          <h6>Laberinto del Robot</h6>
+          <div class="display-4 text-info">{{ porcentajes.laberinto | round(1) }}%</div>
+          <p class="small">{{ datos.laberinto_tiempo | round(1) }} segundos</p>
+        </div>
+        <div class="col-md-3 mb-3">
+          <h6>Captura a Alan Turing</h6>
+          <div class="display-4 text-warning">{{ porcentajes.gravedad | round(1) }}%</div>
+          <p class="small">{{ datos.gravedad_puntos }} puntos</p>
+        </div>
+        <div class="col-md-3 mb-3">
+          <h6>Habilidades</h6>
+          <div class="display-4 text-danger">{{ porcentajes.habilidades | round(1) }}%</div>
+          <p class="small">Formulario de aptitudes</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detalle de respuestas de trivia -->
+  {% if trivia_detalles and trivia_detalles|length > 0 %}
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title text-center">Revisión de Trivia - Historia de la IA</h5>
+      <div class="table-responsive">
+        <table class="table table-sm">
+          <thead class="thead-light">
+            <tr>
+              <th style="width: 50%;">Pregunta</th>
+              <th style="width: 20%;">Tu respuesta</th>
+              <th style="width: 20%;">Correcta</th>
+              <th style="width: 10%;">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for detalle in trivia_detalles %}
+            <tr class="{% if detalle.correcta %}table-success{% else %}table-danger{% endif %}">
+              <td>{{ detalle.pregunta }}</td>
+              <td>{{ detalle.respuesta_usuario }}</td>
+              <td>{{ detalle.respuesta_correcta }}</td>
+              <td class="text-center">
+                {% if detalle.correcta %}
+                  <span class="badge badge-success">✓</span>
+                {% else %}
+                  <span class="badge badge-danger">✗</span>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+        </div>
+        <div class="col-md-3 mb-3">
+          <h6>Habilidades en IA</h6>
+          <div class="display-4 text-primary">{{ porcentajes.habilidades | round(1) }}%</div>
+          <p class="small">Promedio normalizado de habilidades</p>
+        </div>
+        <div class="col-md-3 mb-3">
+          <h6>Alan Turing Challenge</h6>
+          <div class="display-4" style="color:#8b5cf6;">{{ porcentajes.gravedad | default(0) | round(1) }}%</div>
+          <p class="small">Puntos: {{ datos.gravedad_puntos | default(0) }} · Dificultad: {{ datos.gravedad_dificultad | default('medium') }}</p>
+        </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-6 mb-2">
+      <a href="/" class="btn btn-secondary btn-block">⬅ Volver al Inicio</a>
+    </div>
+    <div class="col-md-6 mb-2">
+      <a href="/ranking" class="btn btn-primary btn-block">Ver Ranking</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function validarClave(){
+    const input = document.getElementById('claveAdmin');
+    const err = document.getElementById('claveError');
+    if(input.value !== 'holamundo123'){
+      err.style.display = 'block';
+      return false;
+    }
+    err.style.display = 'none';
+    return true;
+  }
+  // Configuración del gráfico de habilidades
+  const ctx = document.getElementById('graficoHabilidades').getContext('2d');
+  const evaluaciones = {{ evaluaciones | tojson }};
+  const habilidadesLabels = Object.keys(evaluaciones).map(k => k.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()));
+  const habilidadesValores = Object.values(evaluaciones).map(v => v[0]);
+
+  new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: habilidadesLabels,
+      datasets: [{
+        label: 'Nivel de Habilidad',
+        data: habilidadesValores,
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+        pointBorderColor: '#fff',
+      }]
+    },
+    options: {
+      scale: {
+        ticks: {
+          beginAtZero: true,
+          max: 10
+        }
+      }
+    }
+  });
+
+  // Gráfico de barras de componentes
+  const compCtx = document.getElementById('graficoComponentes').getContext('2d');
+  const porcentajesData = {{ porcentajes | tojson }};
+  const compLabels = ['Historia IA', 'Laberinto Robot', 'Habilidades IA', 'Alan Turing Challenge'];
+  const compValores = [
+    (porcentajesData.trivia || 0),
+    (porcentajesData.laberinto || 0),
+    (porcentajesData.habilidades || 0),
+    (porcentajesData.gravedad || 0)
+  ];
+
+  new Chart(compCtx, {
+    type: 'bar',
+    data: {
+      labels: compLabels,
+      datasets: [{
+        label: 'Porcentaje',
+        data: compValores,
+        backgroundColor: [
+          'rgba(40, 167, 69, 0.6)',   // Trivia (green)
+          'rgba(23, 162, 184, 0.6)',  // Laberinto (teal)
+          'rgba(0, 123, 255, 0.6)',   // Habilidades (blue)
+          'rgba(139, 92, 246, 0.6)'   // Gravedad (purple)
+        ],
+        borderColor: [
+          'rgba(40, 167, 69, 1)',
+          'rgba(23, 162, 184, 1)',
+          'rgba(0, 123, 255, 1)',
+          'rgba(139, 92, 246, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          suggestedMax: 100
+        }
+      }
+    }
+  });
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

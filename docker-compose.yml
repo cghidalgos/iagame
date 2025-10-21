@@ -1,0 +1,12 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5013:5000"
+    volumes:
+      - ./usuarios.json:/app/usuarios.json
+      - ./datos.csv:/app/datos.csv
+    restart: unless-stopped
+    environment:
+      - GUNICORN_WORKERS=3
+      - GUNICORN_THREADS=2

@@ -1,0 +1,2693 @@
+[
+    {
+        "edad": 22,
+        "promedio": 4.0,
+        "programacion": 6,
+        "matematicas": 6,
+        "analisis_datos": 6,
+        "ingles": 1,
+        "resolucion_problemas": 4,
+        "trabajo_equipo": 6,
+        "comunicacion": 4,
+        "creatividad": 7,
+        "puntaje_final": 0.8541666666666667,
+        "nombre": "giovanny Hidalgo",
+        "trivia_puntaje": 10,
+        "trivia_total": 10,
+        "laberinto_tiempo": 14.0,
+        "habilidades_score": 0.5333333333333334,
+        "gravedad_puntos": 416,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "hard",
+        "gravedad_score": 1.0,
+        "tipo_ingeniero": "Estadístico",
+        "mejoras": [
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            },
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 100.0,
+            "laberinto": 88.33333333333333,
+            "habilidades": 53.33333333333334,
+            "gravedad": 100.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "matematicas": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "analisis_datos": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "ingles": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "resolucion_problemas": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "comunicacion": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "creatividad": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ]
+        },
+        "mejor_habilidad": "Ingles"
+    },
+    {
+        "edad": 17,
+        "promedio": 4.0,
+        "programacion": 10,
+        "matematicas": 3,
+        "analisis_datos": 5,
+        "ingles": 3,
+        "resolucion_problemas": 4,
+        "trabajo_equipo": 10,
+        "comunicacion": 7,
+        "creatividad": 5,
+        "puntaje_final": 0.8636111111111111,
+        "nombre": "ss",
+        "trivia_puntaje": 10,
+        "trivia_total": 10,
+        "laberinto_tiempo": 11.6,
+        "habilidades_score": 0.6111111111111112,
+        "gravedad_puntos": 376,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "hard",
+        "gravedad_score": 0.94,
+        "tipo_ingeniero": "Ingeniero de datos",
+        "mejoras": [
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 100.0,
+            "laberinto": 90.33333333333333,
+            "habilidades": 61.111111111111114,
+            "gravedad": 94.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "matematicas": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "analisis_datos": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "ingles": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "resolucion_problemas": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "comunicacion": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "creatividad": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ]
+        },
+        "mejor_habilidad": "Programacion"
+    },
+    {
+        "edad": 19,
+        "promedio": 3.9,
+        "programacion": 3,
+        "matematicas": 3,
+        "analisis_datos": 3,
+        "ingles": 1,
+        "resolucion_problemas": 10,
+        "trabajo_equipo": 3,
+        "comunicacion": 6,
+        "creatividad": 5,
+        "puntaje_final": 0.5175,
+        "nombre": "Jules Pérez",
+        "trivia_puntaje": 10,
+        "trivia_total": 10,
+        "laberinto_tiempo": 54.7,
+        "habilidades_score": 0.425,
+        "gravedad_puntos": 98,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "easy",
+        "gravedad_score": 0.39,
+        "tipo_ingeniero": "Científico de datos",
+        "mejoras": [
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            },
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 100.0,
+            "laberinto": 25.5,
+            "habilidades": 42.5,
+            "gravedad": 39.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "matematicas": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "analisis_datos": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "ingles": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "resolucion_problemas": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "trabajo_equipo": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "comunicacion": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "creatividad": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ]
+        },
+        "mejor_habilidad": "Resolucionproblemas"
+    },
+    {
+        "edad": 27,
+        "promedio": 4.2,
+        "programacion": 6,
+        "matematicas": 5,
+        "analisis_datos": 9,
+        "ingles": 8,
+        "resolucion_problemas": 4,
+        "trabajo_equipo": 9,
+        "comunicacion": 10,
+        "creatividad": 7,
+        "puntaje_final": 0.698325,
+        "nombre": "Ellis Hernández",
+        "trivia_puntaje": 10,
+        "trivia_total": 10,
+        "laberinto_tiempo": 34.1,
+        "habilidades_score": 0.725,
+        "gravedad_puntos": 166,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "medium",
+        "gravedad_score": 0.47,
+        "tipo_ingeniero": "Analista de negocio",
+        "mejoras": [
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 100.0,
+            "laberinto": 59.83,
+            "habilidades": 72.5,
+            "gravedad": 47.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "matematicas": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "analisis_datos": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "ingles": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "resolucion_problemas": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "comunicacion": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "creatividad": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ]
+        },
+        "mejor_habilidad": "Comunicacion"
+    },
+    {
+        "edad": 23,
+        "promedio": 4.7,
+        "programacion": 1,
+        "matematicas": 10,
+        "analisis_datos": 5,
+        "ingles": 5,
+        "resolucion_problemas": 8,
+        "trabajo_equipo": 2,
+        "comunicacion": 5,
+        "creatividad": 8,
+        "puntaje_final": 0.827075,
+        "nombre": "Kai Vargas",
+        "trivia_puntaje": 8,
+        "trivia_total": 10,
+        "laberinto_tiempo": 12.5,
+        "habilidades_score": 0.55,
+        "gravedad_puntos": 448,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "hard",
+        "gravedad_score": 1.0,
+        "tipo_ingeniero": "Estadístico",
+        "mejoras": [
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            },
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 80.0,
+            "laberinto": 95.83,
+            "habilidades": 55.0,
+            "gravedad": 100.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "matematicas": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "analisis_datos": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "ingles": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "resolucion_problemas": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "trabajo_equipo": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "comunicacion": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "creatividad": [
+                8,
+                "🟢 Alto - excelente"
+            ]
+        },
+        "mejor_habilidad": "Matematicas"
+    },
+    {
+        "edad": 20,
+        "promedio": 4.0,
+        "programacion": 5,
+        "matematicas": 2,
+        "analisis_datos": 4,
+        "ingles": 8,
+        "resolucion_problemas": 8,
+        "trabajo_equipo": 5,
+        "comunicacion": 4,
+        "creatividad": 3,
+        "puntaje_final": 0.585625,
+        "nombre": "Sam Díaz",
+        "trivia_puntaje": 6,
+        "trivia_total": 10,
+        "laberinto_tiempo": 40.3,
+        "habilidades_score": 0.4875,
+        "gravedad_puntos": 321,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "hard",
+        "gravedad_score": 0.76,
+        "tipo_ingeniero": "Administrador de base de datos",
+        "mejoras": [
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            },
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 60.0,
+            "laberinto": 49.5,
+            "habilidades": 48.75,
+            "gravedad": 76.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "matematicas": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "analisis_datos": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "ingles": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "resolucion_problemas": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "trabajo_equipo": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "comunicacion": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "creatividad": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ]
+        },
+        "mejor_habilidad": "Ingles"
+    },
+    {
+        "edad": 30,
+        "promedio": 4.9,
+        "programacion": 1,
+        "matematicas": 8,
+        "analisis_datos": 8,
+        "ingles": 7,
+        "resolucion_problemas": 3,
+        "trabajo_equipo": 6,
+        "comunicacion": 1,
+        "creatividad": 6,
+        "puntaje_final": 0.646675,
+        "nombre": "Sasha Hernández",
+        "trivia_puntaje": 6,
+        "trivia_total": 10,
+        "laberinto_tiempo": 19.8,
+        "habilidades_score": 0.5,
+        "gravedad_puntos": 163,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "easy",
+        "gravedad_score": 0.65,
+        "tipo_ingeniero": "Estadístico",
+        "mejoras": [
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            },
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 60.0,
+            "laberinto": 83.67,
+            "habilidades": 50.0,
+            "gravedad": 65.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "matematicas": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "analisis_datos": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "ingles": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "resolucion_problemas": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "comunicacion": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "creatividad": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ]
+        },
+        "mejor_habilidad": "Matematicas"
+    },
+    {
+        "edad": 22,
+        "promedio": 4.1,
+        "programacion": 6,
+        "matematicas": 8,
+        "analisis_datos": 7,
+        "ingles": 7,
+        "resolucion_problemas": 2,
+        "trabajo_equipo": 10,
+        "comunicacion": 7,
+        "creatividad": 5,
+        "puntaje_final": 0.664575,
+        "nombre": "Hayden Morales",
+        "trivia_puntaje": 9,
+        "trivia_total": 10,
+        "laberinto_tiempo": 41.9,
+        "habilidades_score": 0.65,
+        "gravedad_puntos": 225,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "medium",
+        "gravedad_score": 0.64,
+        "tipo_ingeniero": "Analista de negocio",
+        "mejoras": [
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            },
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 90.0,
+            "laberinto": 46.83,
+            "habilidades": 65.0,
+            "gravedad": 64.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "matematicas": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "analisis_datos": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "ingles": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "resolucion_problemas": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "comunicacion": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "creatividad": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ]
+        },
+        "mejor_habilidad": "Trabajoequipo"
+    },
+    {
+        "edad": 15,
+        "promedio": 2.5,
+        "programacion": 6,
+        "matematicas": 2,
+        "analisis_datos": 7,
+        "ingles": 10,
+        "resolucion_problemas": 2,
+        "trabajo_equipo": 2,
+        "comunicacion": 8,
+        "creatividad": 5,
+        "puntaje_final": 0.492075,
+        "nombre": "Reese Rivera",
+        "trivia_puntaje": 5,
+        "trivia_total": 10,
+        "laberinto_tiempo": 54.2,
+        "habilidades_score": 0.525,
+        "gravedad_puntos": 170,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "easy",
+        "gravedad_score": 0.68,
+        "tipo_ingeniero": "Analista de datos",
+        "mejoras": [
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            },
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 50.0,
+            "laberinto": 26.33,
+            "habilidades": 52.5,
+            "gravedad": 68.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "matematicas": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "analisis_datos": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "ingles": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "resolucion_problemas": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "comunicacion": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "creatividad": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ]
+        },
+        "mejor_habilidad": "Ingles"
+    },
+    {
+        "edad": 27,
+        "promedio": 4.4,
+        "programacion": 8,
+        "matematicas": 4,
+        "analisis_datos": 5,
+        "ingles": 5,
+        "resolucion_problemas": 7,
+        "trabajo_equipo": 2,
+        "comunicacion": 8,
+        "creatividad": 3,
+        "puntaje_final": 0.65625,
+        "nombre": "Emery Hernández",
+        "trivia_puntaje": 9,
+        "trivia_total": 10,
+        "laberinto_tiempo": 41.8,
+        "habilidades_score": 0.525,
+        "gravedad_puntos": 256,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "medium",
+        "gravedad_score": 0.73,
+        "tipo_ingeniero": "Científico de datos",
+        "mejoras": [
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 90.0,
+            "laberinto": 47.0,
+            "habilidades": 52.5,
+            "gravedad": 73.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "matematicas": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "analisis_datos": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "ingles": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "resolucion_problemas": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "trabajo_equipo": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "comunicacion": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "creatividad": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ]
+        },
+        "mejor_habilidad": "Programacion"
+    },
+    {
+        "edad": 29,
+        "promedio": 4.1,
+        "programacion": 10,
+        "matematicas": 5,
+        "analisis_datos": 9,
+        "ingles": 1,
+        "resolucion_problemas": 5,
+        "trabajo_equipo": 3,
+        "comunicacion": 4,
+        "creatividad": 2,
+        "puntaje_final": 0.5773,
+        "nombre": "Zion Pérez",
+        "trivia_puntaje": 10,
+        "trivia_total": 10,
+        "laberinto_tiempo": 41.1,
+        "habilidades_score": 0.4875,
+        "gravedad_puntos": 85,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "easy",
+        "gravedad_score": 0.34,
+        "tipo_ingeniero": "Ingeniero de aprendizaje automático",
+        "mejoras": [
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 100.0,
+            "laberinto": 48.17,
+            "habilidades": 48.75,
+            "gravedad": 34.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "matematicas": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "analisis_datos": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "ingles": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "resolucion_problemas": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "trabajo_equipo": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "comunicacion": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "creatividad": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ]
+        },
+        "mejor_habilidad": "Programacion"
+    },
+    {
+        "edad": 23,
+        "promedio": 4.3,
+        "programacion": 6,
+        "matematicas": 2,
+        "analisis_datos": 6,
+        "ingles": 9,
+        "resolucion_problemas": 1,
+        "trabajo_equipo": 5,
+        "comunicacion": 8,
+        "creatividad": 3,
+        "puntaje_final": 0.624575,
+        "nombre": "Ari Gómez",
+        "trivia_puntaje": 5,
+        "trivia_total": 10,
+        "laberinto_tiempo": 11.3,
+        "habilidades_score": 0.5,
+        "gravedad_puntos": 181,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "medium",
+        "gravedad_score": 0.52,
+        "tipo_ingeniero": "Analista de datos",
+        "mejoras": [
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            },
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 50.0,
+            "laberinto": 97.83,
+            "habilidades": 50.0,
+            "gravedad": 52.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "matematicas": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "analisis_datos": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "ingles": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "resolucion_problemas": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "comunicacion": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "creatividad": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ]
+        },
+        "mejor_habilidad": "Ingles"
+    },
+    {
+        "edad": 19,
+        "promedio": 2.9,
+        "programacion": 6,
+        "matematicas": 10,
+        "analisis_datos": 3,
+        "ingles": 1,
+        "resolucion_problemas": 1,
+        "trabajo_equipo": 2,
+        "comunicacion": 4,
+        "creatividad": 9,
+        "puntaje_final": 0.534175,
+        "nombre": "Jules Rojas",
+        "trivia_puntaje": 8,
+        "trivia_total": 10,
+        "laberinto_tiempo": 67.8,
+        "habilidades_score": 0.45,
+        "gravedad_puntos": 358,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "hard",
+        "gravedad_score": 0.85,
+        "tipo_ingeniero": "Estadístico",
+        "mejoras": [
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 80.0,
+            "laberinto": 3.67,
+            "habilidades": 45.0,
+            "gravedad": 85.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "matematicas": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "analisis_datos": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "ingles": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "resolucion_problemas": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "comunicacion": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "creatividad": [
+                9,
+                "🟢 Alto - excelente"
+            ]
+        },
+        "mejor_habilidad": "Matematicas"
+    },
+    {
+        "edad": 30,
+        "promedio": 4.6,
+        "programacion": 10,
+        "matematicas": 4,
+        "analisis_datos": 10,
+        "ingles": 8,
+        "resolucion_problemas": 3,
+        "trabajo_equipo": 7,
+        "comunicacion": 10,
+        "creatividad": 2,
+        "puntaje_final": 0.539575,
+        "nombre": "Adrian Martínez",
+        "trivia_puntaje": 5,
+        "trivia_total": 10,
+        "laberinto_tiempo": 48.2,
+        "habilidades_score": 0.675,
+        "gravedad_puntos": 217,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "medium",
+        "gravedad_score": 0.62,
+        "tipo_ingeniero": "Analista de datos",
+        "mejoras": [
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            },
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 50.0,
+            "laberinto": 36.33,
+            "habilidades": 67.5,
+            "gravedad": 62.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "matematicas": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "analisis_datos": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "ingles": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "resolucion_problemas": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "comunicacion": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "creatividad": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ]
+        },
+        "mejor_habilidad": "Programacion"
+    },
+    {
+        "edad": 23,
+        "promedio": 2.7,
+        "programacion": 2,
+        "matematicas": 10,
+        "analisis_datos": 9,
+        "ingles": 6,
+        "resolucion_problemas": 4,
+        "trabajo_equipo": 9,
+        "comunicacion": 5,
+        "creatividad": 9,
+        "puntaje_final": 0.566675,
+        "nombre": "Sasha Rodríguez",
+        "trivia_puntaje": 8,
+        "trivia_total": 10,
+        "laberinto_tiempo": 68.7,
+        "habilidades_score": 0.675,
+        "gravedad_puntos": 323,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "hard",
+        "gravedad_score": 0.77,
+        "tipo_ingeniero": "Estadístico",
+        "mejoras": [
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            },
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 80.0,
+            "laberinto": 2.17,
+            "habilidades": 67.5,
+            "gravedad": 77.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "matematicas": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "analisis_datos": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "ingles": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "resolucion_problemas": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "comunicacion": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "creatividad": [
+                9,
+                "🟢 Alto - excelente"
+            ]
+        },
+        "mejor_habilidad": "Matematicas"
+    },
+    {
+        "edad": 18,
+        "promedio": 4.9,
+        "programacion": 4,
+        "matematicas": 2,
+        "analisis_datos": 9,
+        "ingles": 9,
+        "resolucion_problemas": 9,
+        "trabajo_equipo": 3,
+        "comunicacion": 2,
+        "creatividad": 6,
+        "puntaje_final": 0.622925,
+        "nombre": "Quin González",
+        "trivia_puntaje": 6,
+        "trivia_total": 10,
+        "laberinto_tiempo": 41.1,
+        "habilidades_score": 0.55,
+        "gravedad_puntos": 362,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "hard",
+        "gravedad_score": 0.86,
+        "tipo_ingeniero": "Analista de datos",
+        "mejoras": [
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 60.0,
+            "laberinto": 48.17,
+            "habilidades": 55.0,
+            "gravedad": 86.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "matematicas": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "analisis_datos": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "ingles": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "resolucion_problemas": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "trabajo_equipo": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "comunicacion": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "creatividad": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ]
+        },
+        "mejor_habilidad": "Analisisdatos"
+    },
+    {
+        "edad": 14,
+        "promedio": 3.9,
+        "programacion": 2,
+        "matematicas": 5,
+        "analisis_datos": 8,
+        "ingles": 9,
+        "resolucion_problemas": 2,
+        "trabajo_equipo": 4,
+        "comunicacion": 5,
+        "creatividad": 1,
+        "puntaje_final": 0.6175,
+        "nombre": "Rowan Pérez",
+        "trivia_puntaje": 4,
+        "trivia_total": 10,
+        "laberinto_tiempo": 23.2,
+        "habilidades_score": 0.45,
+        "gravedad_puntos": 351,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "hard",
+        "gravedad_score": 0.84,
+        "tipo_ingeniero": "Analista de datos",
+        "mejoras": [
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            },
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 40.0,
+            "laberinto": 78.0,
+            "habilidades": 45.0,
+            "gravedad": 84.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "matematicas": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "analisis_datos": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "ingles": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "resolucion_problemas": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "comunicacion": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "creatividad": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ]
+        },
+        "mejor_habilidad": "Ingles"
+    },
+    {
+        "edad": 14,
+        "promedio": 3.7,
+        "programacion": 3,
+        "matematicas": 10,
+        "analisis_datos": 7,
+        "ingles": 5,
+        "resolucion_problemas": 10,
+        "trabajo_equipo": 2,
+        "comunicacion": 7,
+        "creatividad": 6,
+        "puntaje_final": 0.5125,
+        "nombre": "Nico García",
+        "trivia_puntaje": 6,
+        "trivia_total": 10,
+        "laberinto_tiempo": 60.1,
+        "habilidades_score": 0.625,
+        "gravedad_puntos": 164,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "easy",
+        "gravedad_score": 0.66,
+        "tipo_ingeniero": "Estadístico",
+        "mejoras": [
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            },
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 60.0,
+            "laberinto": 16.5,
+            "habilidades": 62.5,
+            "gravedad": 66.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "matematicas": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "analisis_datos": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "ingles": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "resolucion_problemas": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "trabajo_equipo": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "comunicacion": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "creatividad": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ]
+        },
+        "mejor_habilidad": "Matematicas"
+    },
+    {
+        "edad": 30,
+        "promedio": 3.8,
+        "programacion": 7,
+        "matematicas": 7,
+        "analisis_datos": 4,
+        "ingles": 3,
+        "resolucion_problemas": 4,
+        "trabajo_equipo": 7,
+        "comunicacion": 7,
+        "creatividad": 10,
+        "puntaje_final": 0.68605,
+        "nombre": "Cruz Navarro",
+        "trivia_puntaje": 10,
+        "trivia_total": 10,
+        "laberinto_tiempo": 46.5,
+        "habilidades_score": 0.6125,
+        "gravedad_puntos": 312,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "hard",
+        "gravedad_score": 0.74,
+        "tipo_ingeniero": "Analista de negocio",
+        "mejoras": [
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            },
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 100.0,
+            "laberinto": 39.17,
+            "habilidades": 61.25,
+            "gravedad": 74.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "matematicas": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "analisis_datos": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "ingles": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "resolucion_problemas": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "comunicacion": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "creatividad": [
+                10,
+                "🟢 Alto - excelente"
+            ]
+        },
+        "mejor_habilidad": "Creatividad"
+    },
+    {
+        "edad": 27,
+        "promedio": 4.5,
+        "programacion": 6,
+        "matematicas": 8,
+        "analisis_datos": 5,
+        "ingles": 6,
+        "resolucion_problemas": 3,
+        "trabajo_equipo": 7,
+        "comunicacion": 6,
+        "creatividad": 2,
+        "puntaje_final": 0.44895,
+        "nombre": "Ellis López",
+        "trivia_puntaje": 7,
+        "trivia_total": 10,
+        "laberinto_tiempo": 68.3,
+        "habilidades_score": 0.5375,
+        "gravedad_puntos": 185,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "medium",
+        "gravedad_score": 0.53,
+        "tipo_ingeniero": "Estadístico",
+        "mejoras": [
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 70.0,
+            "laberinto": 2.83,
+            "habilidades": 53.75,
+            "gravedad": 53.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "matematicas": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "analisis_datos": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "ingles": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "resolucion_problemas": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "comunicacion": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "creatividad": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ]
+        },
+        "mejor_habilidad": "Matematicas"
+    },
+    {
+        "edad": 16,
+        "promedio": 5.0,
+        "programacion": 7,
+        "matematicas": 2,
+        "analisis_datos": 1,
+        "ingles": 4,
+        "resolucion_problemas": 2,
+        "trabajo_equipo": 9,
+        "comunicacion": 8,
+        "creatividad": 1,
+        "puntaje_final": 0.67375,
+        "nombre": "Cameron González",
+        "trivia_puntaje": 9,
+        "trivia_total": 10,
+        "laberinto_tiempo": 47.8,
+        "habilidades_score": 0.425,
+        "gravedad_puntos": 478,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "hard",
+        "gravedad_score": 1.0,
+        "tipo_ingeniero": "Analista de negocio",
+        "mejoras": [
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            },
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            },
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 90.0,
+            "laberinto": 37.0,
+            "habilidades": 42.5,
+            "gravedad": 100.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "matematicas": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "analisis_datos": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "ingles": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "resolucion_problemas": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "comunicacion": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "creatividad": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ]
+        },
+        "mejor_habilidad": "Trabajoequipo"
+    },
+    {
+        "edad": 28,
+        "promedio": 3.0,
+        "programacion": 3,
+        "matematicas": 3,
+        "analisis_datos": 7,
+        "ingles": 9,
+        "resolucion_problemas": 2,
+        "trabajo_equipo": 7,
+        "comunicacion": 7,
+        "creatividad": 5,
+        "puntaje_final": 0.5377,
+        "nombre": "Taylor López",
+        "trivia_puntaje": 5,
+        "trivia_total": 10,
+        "laberinto_tiempo": 48.8,
+        "habilidades_score": 0.5375,
+        "gravedad_puntos": 265,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "medium",
+        "gravedad_score": 0.76,
+        "tipo_ingeniero": "Analista de datos",
+        "mejoras": [
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            },
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 50.0,
+            "laberinto": 35.33,
+            "habilidades": 53.75,
+            "gravedad": 76.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "matematicas": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "analisis_datos": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "ingles": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "resolucion_problemas": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "comunicacion": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "creatividad": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ]
+        },
+        "mejor_habilidad": "Ingles"
+    },
+    {
+        "edad": 29,
+        "promedio": 4.3,
+        "programacion": 3,
+        "matematicas": 2,
+        "analisis_datos": 10,
+        "ingles": 7,
+        "resolucion_problemas": 8,
+        "trabajo_equipo": 9,
+        "comunicacion": 2,
+        "creatividad": 6,
+        "puntaje_final": 0.763125,
+        "nombre": "Alex Gómez",
+        "trivia_puntaje": 8,
+        "trivia_total": 10,
+        "laberinto_tiempo": 18.7,
+        "habilidades_score": 0.5875,
+        "gravedad_puntos": 283,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "medium",
+        "gravedad_score": 0.81,
+        "tipo_ingeniero": "Administrador de base de datos",
+        "mejoras": [
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 80.0,
+            "laberinto": 85.5,
+            "habilidades": 58.75,
+            "gravedad": 81.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "matematicas": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "analisis_datos": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "ingles": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "resolucion_problemas": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "trabajo_equipo": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "comunicacion": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "creatividad": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ]
+        },
+        "mejor_habilidad": "Analisisdatos"
+    },
+    {
+        "edad": 27,
+        "promedio": 4.0,
+        "programacion": 5,
+        "matematicas": 9,
+        "analisis_datos": 5,
+        "ingles": 2,
+        "resolucion_problemas": 2,
+        "trabajo_equipo": 1,
+        "comunicacion": 10,
+        "creatividad": 5,
+        "puntaje_final": 0.626875,
+        "nombre": "Cruz López",
+        "trivia_puntaje": 4,
+        "trivia_total": 10,
+        "laberinto_tiempo": 10.6,
+        "habilidades_score": 0.4875,
+        "gravedad_puntos": 158,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "easy",
+        "gravedad_score": 0.63,
+        "tipo_ingeniero": "Estadístico",
+        "mejoras": [
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 40.0,
+            "laberinto": 99.0,
+            "habilidades": 48.75,
+            "gravedad": 63.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "matematicas": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "analisis_datos": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "ingles": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "resolucion_problemas": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "comunicacion": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "creatividad": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ]
+        },
+        "mejor_habilidad": "Comunicacion"
+    },
+    {
+        "edad": 29,
+        "promedio": 4.2,
+        "programacion": 3,
+        "matematicas": 4,
+        "analisis_datos": 7,
+        "ingles": 3,
+        "resolucion_problemas": 7,
+        "trabajo_equipo": 1,
+        "comunicacion": 7,
+        "creatividad": 5,
+        "puntaje_final": 0.48895,
+        "nombre": "Avery Navarro",
+        "trivia_puntaje": 4,
+        "trivia_total": 10,
+        "laberinto_tiempo": 31.4,
+        "habilidades_score": 0.4625,
+        "gravedad_puntos": 112,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "easy",
+        "gravedad_score": 0.45,
+        "tipo_ingeniero": "Científico de datos",
+        "mejoras": [
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            },
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 40.0,
+            "laberinto": 64.33,
+            "habilidades": 46.25,
+            "gravedad": 45.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "matematicas": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "analisis_datos": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "ingles": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "resolucion_problemas": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "trabajo_equipo": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "comunicacion": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "creatividad": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ]
+        },
+        "mejor_habilidad": "Analisisdatos"
+    },
+    {
+        "edad": 16,
+        "promedio": 3.0,
+        "programacion": 5,
+        "matematicas": 4,
+        "analisis_datos": 6,
+        "ingles": 8,
+        "resolucion_problemas": 4,
+        "trabajo_equipo": 3,
+        "comunicacion": 7,
+        "creatividad": 10,
+        "puntaje_final": 0.72645,
+        "nombre": "Riley López",
+        "trivia_puntaje": 7,
+        "trivia_total": 10,
+        "laberinto_tiempo": 17.3,
+        "habilidades_score": 0.5875,
+        "gravedad_puntos": 258,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "medium",
+        "gravedad_score": 0.74,
+        "tipo_ingeniero": "Analista de datos",
+        "mejoras": [
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 70.0,
+            "laberinto": 87.83,
+            "habilidades": 58.75,
+            "gravedad": 74.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "matematicas": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "analisis_datos": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "ingles": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "resolucion_problemas": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "comunicacion": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "creatividad": [
+                10,
+                "🟢 Alto - excelente"
+            ]
+        },
+        "mejor_habilidad": "Creatividad"
+    },
+    {
+        "edad": 21,
+        "promedio": 3.2,
+        "programacion": 10,
+        "matematicas": 10,
+        "analisis_datos": 1,
+        "ingles": 6,
+        "resolucion_problemas": 1,
+        "trabajo_equipo": 7,
+        "comunicacion": 4,
+        "creatividad": 5,
+        "puntaje_final": 0.615,
+        "nombre": "Ari Rivera",
+        "trivia_puntaje": 10,
+        "trivia_total": 10,
+        "laberinto_tiempo": 42.4,
+        "habilidades_score": 0.55,
+        "gravedad_puntos": 158,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "medium",
+        "gravedad_score": 0.45,
+        "tipo_ingeniero": "Estadístico",
+        "mejoras": [
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            },
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            },
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 100.0,
+            "laberinto": 46.0,
+            "habilidades": 55.0,
+            "gravedad": 45.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "matematicas": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "analisis_datos": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "ingles": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "resolucion_problemas": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "comunicacion": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "creatividad": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ]
+        },
+        "mejor_habilidad": "Programacion"
+    },
+    {
+        "edad": 22,
+        "promedio": 3.5,
+        "programacion": 7,
+        "matematicas": 3,
+        "analisis_datos": 3,
+        "ingles": 2,
+        "resolucion_problemas": 5,
+        "trabajo_equipo": 7,
+        "comunicacion": 5,
+        "creatividad": 2,
+        "puntaje_final": 0.528325,
+        "nombre": "Morgan Ortega",
+        "trivia_puntaje": 6,
+        "trivia_total": 10,
+        "laberinto_tiempo": 64.7,
+        "habilidades_score": 0.425,
+        "gravedad_puntos": 425,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "hard",
+        "gravedad_score": 1.0,
+        "tipo_ingeniero": "Administrador de base de datos",
+        "mejoras": [
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 60.0,
+            "laberinto": 8.83,
+            "habilidades": 42.5,
+            "gravedad": 100.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "matematicas": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "analisis_datos": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "ingles": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "resolucion_problemas": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "trabajo_equipo": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "comunicacion": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "creatividad": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ]
+        },
+        "mejor_habilidad": "Programacion"
+    },
+    {
+        "edad": 20,
+        "promedio": 3.6,
+        "programacion": 6,
+        "matematicas": 3,
+        "analisis_datos": 1,
+        "ingles": 9,
+        "resolucion_problemas": 7,
+        "trabajo_equipo": 6,
+        "comunicacion": 1,
+        "creatividad": 8,
+        "puntaje_final": 0.523125,
+        "nombre": "Sky Gómez",
+        "trivia_puntaje": 7,
+        "trivia_total": 10,
+        "laberinto_tiempo": 63.4,
+        "habilidades_score": 0.5125,
+        "gravedad_puntos": 192,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "easy",
+        "gravedad_score": 0.77,
+        "tipo_ingeniero": "Administrador de base de datos",
+        "mejoras": [
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            },
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 70.0,
+            "laberinto": 11.0,
+            "habilidades": 51.25,
+            "gravedad": 77.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "matematicas": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "analisis_datos": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "ingles": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "resolucion_problemas": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "trabajo_equipo": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "comunicacion": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "creatividad": [
+                8,
+                "🟢 Alto - excelente"
+            ]
+        },
+        "mejor_habilidad": "Ingles"
+    },
+    {
+        "edad": 30,
+        "promedio": 2.6,
+        "programacion": 5,
+        "matematicas": 1,
+        "analisis_datos": 9,
+        "ingles": 2,
+        "resolucion_problemas": 7,
+        "trabajo_equipo": 7,
+        "comunicacion": 8,
+        "creatividad": 3,
+        "puntaje_final": 0.743325,
+        "nombre": "Alex Sánchez",
+        "trivia_puntaje": 7,
+        "trivia_total": 10,
+        "laberinto_tiempo": 20.9,
+        "habilidades_score": 0.525,
+        "gravedad_puntos": 391,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "hard",
+        "gravedad_score": 0.93,
+        "tipo_ingeniero": "Analista de negocio",
+        "mejoras": [
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            },
+            {
+                "area": "Comunicación",
+                "detalle": "Mejora tu capacidad de presentar insights y trabajar con stakeholders."
+            },
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 70.0,
+            "laberinto": 81.83,
+            "habilidades": 52.5,
+            "gravedad": 93.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "matematicas": [
+                1,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "analisis_datos": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "ingles": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "resolucion_problemas": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "trabajo_equipo": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "comunicacion": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "creatividad": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ]
+        },
+        "mejor_habilidad": "Analisisdatos"
+    },
+    {
+        "edad": 15,
+        "promedio": 2.7,
+        "programacion": 8,
+        "matematicas": 9,
+        "analisis_datos": 3,
+        "ingles": 4,
+        "resolucion_problemas": 4,
+        "trabajo_equipo": 8,
+        "comunicacion": 3,
+        "creatividad": 2,
+        "puntaje_final": 0.604375,
+        "nombre": "Cruz Torres",
+        "trivia_puntaje": 6,
+        "trivia_total": 10,
+        "laberinto_tiempo": 34.9,
+        "habilidades_score": 0.5125,
+        "gravedad_puntos": 179,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "easy",
+        "gravedad_score": 0.72,
+        "tipo_ingeniero": "Ingeniero de datos",
+        "mejoras": [
+            {
+                "area": "Programación",
+                "detalle": "Practica con Python, R o lenguajes orientados a datos y ML."
+            },
+            {
+                "area": "Matemáticas y estadística",
+                "detalle": "Refuerza álgebra lineal, cálculo y estadística para IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 60.0,
+            "laberinto": 58.5,
+            "habilidades": 51.25,
+            "gravedad": 72.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "matematicas": [
+                9,
+                "🟢 Alto - excelente"
+            ],
+            "analisis_datos": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "ingles": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "resolucion_problemas": [
+                4,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "trabajo_equipo": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "comunicacion": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "creatividad": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ]
+        },
+        "mejor_habilidad": "Matematicas"
+    },
+    {
+        "edad": 25,
+        "promedio": 3.8,
+        "programacion": 2,
+        "matematicas": 7,
+        "analisis_datos": 10,
+        "ingles": 6,
+        "resolucion_problemas": 7,
+        "trabajo_equipo": 7,
+        "comunicacion": 10,
+        "creatividad": 3,
+        "puntaje_final": 0.628325,
+        "nombre": "Logan Díaz",
+        "trivia_puntaje": 5,
+        "trivia_total": 10,
+        "laberinto_tiempo": 30.8,
+        "habilidades_score": 0.65,
+        "gravedad_puntos": 250,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "medium",
+        "gravedad_score": 0.71,
+        "tipo_ingeniero": "Analista de negocio",
+        "mejoras": [
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            },
+            {
+                "area": "Análisis de datos",
+                "detalle": "Aprende técnicas de exploración, visualización y limpieza de datos."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 50.0,
+            "laberinto": 65.33,
+            "habilidades": 65.0,
+            "gravedad": 71.0
+        },
+        "evaluaciones": {
+            "programacion": [
+                2,
+                "🔴 Bajo - necesita mejorar"
+            ],
+            "matematicas": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "analisis_datos": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "ingles": [
+                6,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "resolucion_problemas": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "trabajo_equipo": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "comunicacion": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "creatividad": [
+                3,
+                "🔴 Bajo - necesita mejorar"
+            ]
+        },
+        "mejor_habilidad": "Analisisdatos"
+    },
+    {
+        "edad": 30,
+        "promedio": 4.8,
+        "programacion": 8,
+        "matematicas": 8,
+        "analisis_datos": 10,
+        "ingles": 5,
+        "resolucion_problemas": 10,
+        "trabajo_equipo": 10,
+        "comunicacion": 10,
+        "creatividad": 9,
+        "puntaje_final": 0.5181944444444445,
+        "nombre": "Leidy Carvajal",
+        "trivia_puntaje": 6,
+        "trivia_total": 10,
+        "laberinto_tiempo": 64.1,
+        "habilidades_score": 0.8844444444444446,
+        "gravedad_puntos": 49,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "hard",
+        "gravedad_score": 0.1225,
+        "tipo_ingeniero": "Analista de negocio",
+        "mejoras": [
+            {
+                "area": "Inglés técnico",
+                "detalle": "Domina el inglés para documentación, papers y herramientas de IA."
+            }
+        ],
+        "porcentajes": {
+            "trivia": 60.0,
+            "laberinto": 46.58333333333334,
+            "habilidades": 88.44444444444446,
+            "gravedad": 12.25
+        },
+        "evaluaciones": {
+            "programacion": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "matematicas": [
+                8,
+                "🟢 Alto - excelente"
+            ],
+            "analisis_datos": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "ingles": [
+                5,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "resolucion_problemas": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "trabajo_equipo": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "comunicacion": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "creatividad": [
+                9,
+                "🟢 Alto - excelente"
+            ]
+        },
+        "mejor_habilidad": "Analisis datos"
+    },
+    {
+        "edad": 30,
+        "promedio": 5.0,
+        "programacion": 10,
+        "matematicas": 10,
+        "analisis_datos": 10,
+        "ingles": 7,
+        "resolucion_problemas": 10,
+        "trabajo_equipo": 10,
+        "comunicacion": 10,
+        "creatividad": 10,
+        "puntaje_final": 0.7435416666666667,
+        "nombre": "Leidy Carvajal",
+        "trivia_puntaje": 10,
+        "trivia_total": 10,
+        "laberinto_tiempo": 34.8,
+        "habilidades_score": 0.9666666666666666,
+        "gravedad_puntos": 119,
+        "gravedad_combo": 0,
+        "gravedad_dificultad": "hard",
+        "gravedad_score": 0.2975,
+        "tipo_ingeniero": "Científico de datos",
+        "mejoras": [],
+        "porcentajes": {
+            "trivia": 100.0,
+            "laberinto": 71.0,
+            "habilidades": 96.66666666666666,
+            "gravedad": 29.75
+        },
+        "evaluaciones": {
+            "programacion": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "matematicas": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "analisis_datos": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "ingles": [
+                7,
+                "🟡 Medio - aceptable, pero mejorable"
+            ],
+            "resolucion_problemas": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "trabajo_equipo": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "comunicacion": [
+                10,
+                "🟢 Alto - excelente"
+            ],
+            "creatividad": [
+                10,
+                "🟢 Alto - excelente"
+            ]
+        },
+        "mejor_habilidad": "Programacion"
+    }
+]

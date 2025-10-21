@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Ranking - Perfiles IA</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      min-height: 100vh;
+    }
+    .container {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+    }
+    h2, h3 { color: #667eea; }
+    .grafico-container { position: relative; height: 400px; margin: 20px auto; }
+    canvas { max-width: 100%; }
+    .tabla-ranking td, .tabla-ranking th { vertical-align: middle; }
+    .stats-box { background: #f8f9fa; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 20px; margin: 20px 0; }
+    .stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px; padding: 20px; text-align: center; margin: 10px 0; }
+    .stat-card h5 { color: white; margin-bottom: 10px; }
+    .stat-card h2 { color: white; font-weight: bold; }
+    .recomendacion-card { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 10px 0; border-radius: 5px; }
+  </style>
+  
+</head>
+<body class="p-4">
+  {% include 'partials/loader.html' %}
+  <div class="container">
+    <h2 class="text-center mb-4">Ranking de Perfiles en IA</h2>
+
+    <!-- Dashboard de Estadísticas -->
+    <div class="row mb-4">
+      <div class="col-md-3"><div class="stat-card"><h5>Total Usuarios</h5><h2>{{ total_usuarios }}</h2></div></div>
+      <div class="col-md-3"><div class="stat-card"><h5>Promedio General</h5><h2>{{ (promedio * 100) | round(1) }}%</h2></div></div>
+      <div class="col-md-3"><div class="stat-card"><h5>Tiempo Promedio</h5><h2>{{ promedio_laberinto | round(1) }}s</h2></div></div>
+      <div class="col-md-3"><div class="stat-card"><h5>Edad Promedio</h5><h2>{{ promedio_edad | round(0) }} años</h2></div></div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-md-6"><div class="stat-card"><h5>Mejor puntaje</h5><h2>{{ (mejor * 100) | round(1) }}%</h2></div></div>
+      <div class="col-md-6"><div class="stat-card"><h5>Peor puntaje</h5><h2>{{ (peor * 100) | round(1) }}%</h2></div></div>
+    </div>
+
+    <!-- Distribución de Perfiles Profesionales -->
+    <div class="stats-box mb-4">
+      <h5 class="text-center mb-4">Distribución de Perfiles Profesionales</h5>
+      <div class="grafico-container" style="height:350px;"><canvas id="graficoPerfiles"></canvas></div>
+    </div>
+
+    <!-- Radar Promedio de Habilidades -->
+    <div class="stats-box mb-4">
+      <h5 class="text-center mb-4">Perfil de Habilidades - Promedio General</h5>
+      <p class="text-center text-muted">Compara tu perfil con el promedio del ranking</p>
+      <div class="grafico-container" style="height:350px;"><canvas id="graficoRadar"></canvas></div>
+    </div>
+
+    <!-- Distribución de Mejor Habilidad -->
+    <div class="stats-box mb-4">
+      <h5 class="text-center mb-4">Distribución de Mejor Habilidad</h5>
+      <div class="grafico-container"><canvas id="graficoMejorHabilidad"></canvas></div>
+    </div>
+
+    <!-- Podio (Top 10) -->
+    <div class="table-responsive mb-4">
+      <h5 class="text-center mb-3">Podio (Top 10)</h5>
+      <table class="table table-striped tabla-ranking">
+        <thead class="thead-dark">
+          <tr>
+            <th>Nombre</th>
+            <th>Puntaje Final</th>
+            <th>Trivia</th>
+            <th>Laberinto</th>
+            <th>Gravedad Cero</th>
+            <th>Perfil Profesional</th>
+            <th>Mejor habilidad</th>
+            <th>Detalles</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for u in usuarios %}
+          <tr>
+            <td>{{ u.nombre }}</td>
+            <td>{{ (u.puntaje_final * 100) | round(1) }}%</td>
+            <td>{{ u.trivia_puntaje }}/{{ u.trivia_total }}</td>
+            <td>{{ u.laberinto_tiempo | round(1) }}s</td>
+            <td>{{ (u.gravedad_score * 100) | round(0) }}%</td>
+            <td>{{ u.tipo_ingeniero }}</td>
+            <td>{{ u.mejor_habilidad }}</td>
+            <td><a class="btn btn-sm btn-primary" href="/usuario/{{ u.uid }}">Ver detalle</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Gating de Recomendaciones -->
+    <div class="stats-box mb-4" id="gate-recomendaciones">
+      <h3 class="text-center mb-3">Participa en el grupo de interés en Programación, Analítica de Datos e Inteligencia Artificial.</h3>
+      <p class="text-center text-muted"; >¿Te interesa?</p>
+      <div class="d-flex justify-content-center mb-3">
+        <button id="btnInteresaSi" class="btn btn-primary mx-2">Sí, me interesa</button>
+        <button id="btnInteresaNo" class="btn btn-outline-secondary mx-2">No por ahora</button>
+      </div>
+
+  <form id="formInteres" class="mt-3" style="display:none; max-width:600px; margin:0 auto;" data-async="true">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="nombreInteres">Nombres</label>
+            <input type="text" class="form-control" id="nombreInteres" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="correoInteres">Correo</label>
+            <input type="email" class="form-control" id="correoInteres" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" title="Ingresa un correo válido (ejemplo@dominio.com)">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="telefonoInteres">Número de teléfono</label>
+          <input type="tel" class="form-control" id="telefonoInteres" required>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-success">Enviar y desbloquear</button>
+        </div>
+  <small class="form-text text-muted text-center mt-2">Tus datos serán usados para compartirte el material. Se guardarán en datos.csv.</small>
+        <div id="interesMsg" class="text-center mt-2"></div>
+      </form>
+    </div>
+
+    <!-- Recomendaciones de Aprendizaje (inicialmente oculto) -->
+    <div class="stats-box mb-4" id="recomendaciones" style="display:none;">
+      <h3 class="text-center mb-4">Material recomendado</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="recomendacion-card">
+            <h6><strong>Programación para IA</strong></h6>
+            <p class="mb-2">Domina Python y sus librerías esenciales</p>
+            <ul class="small mb-2">
+              <li><a href="https://www.coursera.org/learn/python-for-applied-data-science-ai" target="_blank">Python for Data Science (Coursera)</a></li>
+              <li><a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank">Learn Python - Full Course (YouTube)</a></li>
+              <li><a href="https://www.kaggle.com/learn/python" target="_blank">Python Course (Kaggle)</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="recomendacion-card">
+            <h6><strong>Análisis de Datos</strong></h6>
+            <p class="mb-2">Aprende a explorar y visualizar datos</p>
+            <ul class="small mb-2">
+              <li><a href="https://www.coursera.org/learn/data-analysis-with-python" target="_blank">Data Analysis with Python (Coursera)</a></li>
+              <li><a href="https://www.datacamp.com/courses/introduction-to-data-science-in-python" target="_blank">Intro to Data Science (DataCamp)</a></li>
+              <li><a href="https://www.kaggle.com/learn/pandas" target="_blank">Pandas Tutorial (Kaggle)</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="recomendacion-card">
+            <h6><strong>Machine Learning</strong></h6>
+            <p class="mb-2">Fundamentos de aprendizaje automático</p>
+            <ul class="small mb-2">
+              <li><a href="https://www.coursera.org/learn/machine-learning" target="_blank">Machine Learning by Andrew Ng (Coursera)</a></li>
+              <li><a href="https://www.fast.ai/" target="_blank">Practical Deep Learning (Fast.ai)</a></li>
+              <li><a href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank">Intro to ML (Kaggle)</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="recomendacion-card">
+            <h6><strong>Matemáticas para IA</strong></h6>
+            <p class="mb-2">Álgebra lineal, cálculo y estadística</p>
+            <ul class="small mb-2">
+              <li><a href="https://www.khanacademy.org/math/linear-algebra" target="_blank">Linear Algebra (Khan Academy)</a></li>
+              <li><a href="https://www.coursera.org/learn/mathematics-machine-learning" target="_blank">Mathematics for ML (Coursera)</a></li>
+              <li><a href="https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" target="_blank">Essence of Linear Algebra (3Blue1Brown)</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  </div>
+
+    <a href="/" class="btn btn-secondary btn-block mt-4">⬅ Volver al inicio</a>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!-- Datos en JSON para evitar linting de JS con Jinja -->
+  <script id="data-conteo-perfiles" type="application/json">{{ conteo_perfiles | tojson }}</script>
+  <script id="data-promedios-habilidades" type="application/json">{{ promedios_habilidades | tojson }}</script>
+  <script id="data-labels-habilidades" type="application/json">{{ labels_habilidades | tojson }}</script>
+  <script id="data-valores-habilidades" type="application/json">{{ valores_habilidades | tojson }}</script>
+
+  <script>
+    // Donut de Perfiles Profesionales
+    const perfilesData = JSON.parse(document.getElementById('data-conteo-perfiles').textContent || '{}');
+    const perfilesLabels = Object.keys(perfilesData);
+    const perfilesValores = Object.values(perfilesData);
+    new Chart(document.getElementById('graficoPerfiles'), {
+      type: 'doughnut',
+      data: {
+        labels: perfilesLabels,
+        datasets: [
+          {
+            data: perfilesValores,
+            backgroundColor: [
+              'rgba(102, 126, 234, 0.8)',
+              'rgba(118, 75, 162, 0.8)',
+              'rgba(240, 147, 251, 0.8)',
+              'rgba(54, 162, 235, 0.8)',
+              'rgba(40, 167, 69, 0.8)',
+              'rgba(255, 159, 64, 0.8)',
+              'rgba(255, 99, 132, 0.8)',
+              'rgba(153, 102, 255, 0.8)'
+            ],
+            borderWidth: 2
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'right' }
+        }
+      }
+    });
+
+    // Radar de promedio de habilidades
+    const promediosHab = JSON.parse(document.getElementById('data-promedios-habilidades').textContent || '{}');
+    const habLabels = Object.keys(promediosHab).map(k => k.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()));
+    const habValores = Object.values(promediosHab);
+    new Chart(document.getElementById('graficoRadar'), {
+      type: 'radar',
+      data: {
+        labels: habLabels,
+        datasets: [
+          {
+            label: 'Promedio del Ranking',
+            data: habValores,
+            backgroundColor: 'rgba(102,126,234,0.2)',
+            borderColor: 'rgba(102,126,234,1)',
+            pointBackgroundColor: 'rgba(102,126,234,1)',
+            borderWidth: 2
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          r: {
+            beginAtZero: true,
+            max: 10,
+            ticks: { stepSize: 2 }
+          }
+        },
+        plugins: {
+          legend: { position: 'top' }
+        }
+      }
+    });
+
+    // Barras de mejor habilidad
+    const labelsHabilidades = JSON.parse(document.getElementById('data-labels-habilidades').textContent || '[]');
+    const valoresHabilidades = JSON.parse(document.getElementById('data-valores-habilidades').textContent || '[]');
+    new Chart(document.getElementById('graficoMejorHabilidad'), {
+      type: 'bar',
+      data: {
+        labels: labelsHabilidades,
+        datasets: [
+          {
+            label: 'Cantidad de usuarios',
+            data: valoresHabilidades,
+            backgroundColor: 'rgba(54,162,235,0.8)',
+            borderColor: 'rgba(54,162,235,1)',
+            borderWidth: 2
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Cantidad' }
+          }
+        },
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    // --- Gating de recomendaciones ---
+    const btnSi = document.getElementById('btnInteresaSi');
+    const btnNo = document.getElementById('btnInteresaNo');
+    const formInteres = document.getElementById('formInteres');
+    const gateBox = document.getElementById('gate-recomendaciones');
+    const recBox = document.getElementById('recomendaciones');
+    const msg = document.getElementById('interesMsg');
+
+    // Al presionar "Sí" se muestra el formulario
+    if (btnSi) {
+      btnSi.addEventListener('click', () => {
+        formInteres.style.display = 'block';
+        msg.textContent = '';
+      });
+    }
+    // Al presionar "No" no se desbloquea
+    if (btnNo) {
+      btnNo.addEventListener('click', () => {
+        formInteres.style.display = 'none';
+        msg.textContent = 'Puedes regresar cuando quieras 🙂';
+      });
+    }
+
+    if (formInteres) {
+      formInteres.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        // Ocultar loader global en caso de interferencia
+        const loader = document.getElementById('pageLoader');
+        if (loader) loader.style.display = 'none';
+        msg.textContent = '';
+        const nombre = document.getElementById('nombreInteres').value.trim();
+        const correo = document.getElementById('correoInteres').value.trim();
+        const telefono = document.getElementById('telefonoInteres').value.trim();
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
+        if (!nombre || !correo || !telefono || !emailOk) {
+          msg.textContent = 'Por favor completa todos los campos.';
+          msg.className = 'text-danger text-center mt-2';
+          return;
+        }
+        try {
+          const res = await fetch('/interes-material', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nombre, correo, telefono })
+          });
+          const data = await res.json();
+          if (res.ok && data.ok) {
+            // Desbloquear recomendaciones
+            gateBox.style.display = 'none';
+            recBox.style.display = 'block';
+          } else {
+            msg.textContent = 'No se pudo registrar tu interés. Intenta de nuevo más tarde.';
+            msg.className = 'text-danger text-center mt-2';
+          }
+        } catch (err) {
+          msg.textContent = 'Error de red. Intenta nuevamente.';
+          msg.className = 'text-danger text-center mt-2';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

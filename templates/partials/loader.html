@@ -1,0 +1,58 @@
+<!-- Loader overlay shared across pages -->
+<style>
+  #pageLoader {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.8);
+    z-index: 5000;
+  }
+  .loader-spinner {
+    width: 64px;
+    height: 64px;
+    border: 6px solid rgba(255,255,255,0.25);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+<div id="pageLoader"><div class="loader-spinner" aria-label="Cargando..."></div></div>
+<script>
+(function(){
+  const loader = document.getElementById('pageLoader');
+  if (!loader) return;
+  const show = () => { loader.style.display = 'flex'; };
+  const hide = () => { loader.style.display = 'none'; };
+
+  // Show on navigation
+  window.addEventListener('beforeunload', show);
+  // Hide when page is shown from bfcache
+  window.addEventListener('pageshow', hide);
+
+  // Show on link clicks (same tab)
+  document.addEventListener('click', function(e){
+    const a = e.target.closest('a');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    const target = a.getAttribute('target');
+    const download = a.hasAttribute('download');
+    if (href && !href.startsWith('#') && target !== '_blank' && !download) {
+      show();
+    }
+  }, true);
+
+  // Show on any form submit unless the form is async (data-async="true")
+  document.addEventListener('submit', function(e){
+    try {
+      const form = e.target && e.target.closest ? e.target.closest('form') : null;
+      if (form && form.dataset && form.dataset.async === 'true') {
+        return; // do not show loader for async forms
+      }
+    } catch (_) {}
+    show();
+  }, true);
+})();
+</script>

@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Inicio | Descubre tu Perfil en IA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      color: #222;
+      font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .circuit-bg {
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.3)"/><circle cx="90" cy="90" r="1" fill="rgba(255,255,255,0.3)"/><line x1="10" y1="10" x2="90" y2="90" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>') repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      animation: moveCircuit 30s linear infinite;
+      z-index: 0;
+      opacity: 0.3;
+    }
+    @keyframes moveCircuit {
+      0% { background-position: 0 0; }
+      100% { background-position: 100px 100px; }
+    }
+    .main-box {
+      background: rgba(255,255,255,0.97);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(60, 60, 120, 0.13);
+      padding: 40px 32px 32px 32px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      margin: 32px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .main-box .astro-img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 4px 24px rgba(99,102,241,0.13);
+      margin-bottom: 16px;
+      border: 4px solid #6366f1;
+      background: #fff;
+    }
+    .main-box h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      color: #222;
+    }
+    .main-box p {
+      font-size: 1.15rem;
+      color: #555;
+      margin-bottom: 2.2rem;
+    }
+    .main-box .btn {
+      font-size: 1.1rem;
+      padding: 0.7rem 2rem;
+      border-radius: 24px;
+      margin: 0.5rem 0.3rem;
+      box-shadow: 0 2px 12px rgba(99,102,241,0.09);
+      border: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .main-box .btn-primary {
+      background: linear-gradient(90deg, #6366f1 0%, #7c3aed 100%);
+      color: #fff;
+    }
+    .main-box .btn-primary:hover {
+      background: linear-gradient(90deg, #7c3aed 0%, #6366f1 100%);
+      color: #fff;
+    }
+    .main-box .btn-success {
+      background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+      color: #fff;
+    }
+    .main-box .btn-success:hover {
+      background: linear-gradient(90deg, #16a34a 0%, #22c55e 100%);
+      color: #fff;
+    }
+    @media (max-width: 600px) {
+      .main-box { padding: 24px 8px 20px 8px; }
+      .main-box h1 { font-size: 1.3rem; }
+      .main-box .icon { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+  {% include 'partials/loader.html' %}
+  <div class="circuit-bg"></div>
+  <div class="main-box">
+    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="Inteligencia Artificial" class="astro-img" />
+    <h1>Bienvenido/a al Mundo de la IA</h1>
+    <p>¿Tienes lo necesario para trabajar en Inteligencia Artificial?<br>Participa en los retos y descubre tu perfil profesional.</p>
+    <a href="/trivia" class="btn btn-primary">Empezar...</a>
+    <a href="/ranking" class="btn btn-success">Ver ranking</a>
+  </div>
+</body>
+</html>

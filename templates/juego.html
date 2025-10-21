@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Laberinto del Robot IA</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    #laberintoContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    min-height: 60vw;
+    min-height: 60vh;
+    max-height: 90vh;
+    }
+    #laberinto {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    gap: 1px;
+    width: min(90vw, 90vh, 450px);
+    height: min(90vw, 90vh, 450px);
+    max-width: 450px;
+    max-height: 450px;
+    background: #222;
+    box-sizing: border-box;
+    transition: transform 2s;
+    }
+    .celda {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    }
+    .pared {
+      background-color: #333;
+    }
+    .nave {
+      background-color: #ddd;
+    }
+    .meta {
+      background-color: #ddd;
+    }
+    .touch-controls {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+      user-select: none;
+      transition: transform 2s;
+    }
+    .touch-controls-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px; /* Más separación entre filas */
+      pointer-events: auto;
+    }
+    .touch-btn-row {
+      display: flex;
+      gap: 24px; /* Más separación entre columnas */
+    }
+    .touch-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      font-size: 2rem;
+      background-color: rgba(0, 123, 255, 0.3);
+      border: none;
+      color: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+      touch-action: manipulation;
+      outline: none;
+      opacity: 0.8; /* Más transparencia */
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .touch-btn:active {
+      background-color: rgba(0, 123, 255, 0.85);
+      opacity: 1;
+    }
+    /* Modal de inicio con el mismo diseño de Gravedad Cero */
+    #startModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal-content-custom {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 500px;
+    }
+    .btn-space {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      color: white;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .btn-space:hover { transform: scale(1.05); }
+    /* Evitar zoom por doble toque y selección accidental */
+    body, #laberintoContainer, #laberinto, .touch-btn {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation; /* sugiere evitar doble-tap zoom */
+    }
+    #laberintoContainer, #laberinto {
+      -webkit-user-select: none;
+      user-select: none;
+      overscroll-behavior: contain;
+    }
+    @media (min-width: 600px) {
+      .touch-controls { top: 55%; }
+    }
+    @media (hover: none) {
+      .touch-controls { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  {% include 'partials/loader.html' %}
+  <div class="container text-center">
+    <h2 class="text-white mt-3">Laberinto del Robot IA</h2>
+    <p class="text-light mb-2">Guía al robot hasta la salida lo más rápido posible.</p>
+    <div class="d-flex justify-content-center align-items-center mb-2" style="gap: 16px;">
+      <span class="badge badge-info p-2" id="tiempoBadge">Tiempo: 0.0s</span>
+    </div>
+    <div id="laberintoContainer">
+      <div id="laberinto" style="opacity:0.5;pointer-events:none;"></div>
+      <!-- Controles táctiles centrados sobre el tablero -->
+      <div class="touch-controls" id="touchControls" style="opacity:0.5;pointer-events:none;">
+        <div class="touch-controls-inner" id="touchInner">
+          <button class="touch-btn" id="btnUp" aria-label="Arriba">↑</button>
+          <div class="touch-btn-row">
+            <button class="touch-btn" id="btnLeft" aria-label="Izquierda">←</button>
+            <button class="touch-btn" id="btnRight" aria-label="Derecha">→</button>
+          </div>
+          <button class="touch-btn" id="btnDown" aria-label="Abajo">↓</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de inicio (mismo diseño que Gravedad Cero) -->
+    <div id="startModal">
+      <div class="modal-content-custom">
+        <h3>Laberinto del Robot IA</h3>
+        <p>Guía al robot hasta la salida lo más rápido posible.</p>
+        <div class="mt-3 text-left" style="display: inline-block;">
+          <h5>Instrucciones:</h5>
+          <ul class="mb-0">
+            <li>Usa las <b>flechas del teclado</b> para moverte.</li>
+            <li>En móvil, usa los <b>botones táctiles</b> (flechas grandes).</li>
+            <li>El <b>laberinto rota cada 5 segundos</b>; la dirección se ajusta automáticamente.</li>
+            <li>Llega a la casilla con la <b>🚪 salida</b> desde el <b>🤖 robot</b>.</li>
+          </ul>
+        </div>
+        <button class="btn-space mt-3" id="btnStart">Comenzar</button>
+      </div>
+    </div>
+
+    <form id="form" method="POST" style="display: none;">
+      <input type="hidden" name="tiempo" id="tiempo">
+      <button class="btn btn-success mt-3" type="submit">¡Continuar!</button>
+    </form>
+  </div>
+
+  <script>
+    // Un solo mapa (nivel único)
+    const mapa = [
+      [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+      [1,1,1,1,0,1,1,1,1,1,0,1,1,1,0],
+      [0,0,0,1,0,1,0,0,0,1,0,0,0,1,0],
+      [0,1,0,1,1,1,0,1,1,1,0,1,0,1,0],
+      [0,1,0,0,0,0,0,1,0,0,0,1,0,1,0],
+      [0,1,1,1,1,1,1,1,0,1,1,1,0,1,0],
+      [0,0,0,0,0,0,0,1,0,0,0,0,0,1,0],
+      [0,1,1,1,1,1,1,1,1,1,1,1,0,1,0],
+      [0,1,0,0,0,1,1,0,0,0,1,1,0,1,0],
+      [0,1,1,1,0,1,1,1,1,1,0,1,1,1,0],
+      [0,0,0,1,0,0,1,0,0,1,0,0,0,0,0],
+      [0,1,1,1,1,1,1,1,0,1,1,1,1,1,0],
+      [0,1,0,0,0,0,0,1,0,0,0,0,0,1,0],
+      [0,1,1,1,1,1,0,1,1,1,1,1,0,1,0],
+      [0,0,0,0,0,1,1,1,0,0,0,1,1,1,2]
+    ];
+
+    let posX = 0, posY = 0;
+    const laberinto = document.getElementById('laberinto');
+    let startTime = null;
+    let currentRotation = 0;
+    let intervalRotar = null;
+    let intervalTimer = null;
+    let isStarted = false;
+
+    function updateBadge() {
+      if (!isStarted) return;
+      const elapsed = (Date.now() - startTime) / 1000;
+      document.getElementById('tiempoBadge').textContent = `Tiempo: ${elapsed.toFixed(1)}s`;
+    }
+
+    function mover(dx, dy) {
+      if (!isStarted) return;
+      let realDx = dx;
+      let realDy = dy;
+      // Ajusta dirección según rotación
+      switch ((currentRotation % 360 + 360) % 360) {
+        case 90:
+          realDx = -dy; realDy = dx; break;
+        case 180:
+          realDx = -dx; realDy = -dy; break;
+        case 270:
+          realDx = dy; realDy = -dx; break;
+      }
+      const nuevoX = posX + realDx;
+      const nuevoY = posY + realDy;
+      if (
+        nuevoX >= 0 && nuevoY >= 0 &&
+        nuevoY < mapa.length && nuevoX < mapa[0].length &&
+        mapa[nuevoY][nuevoX] !== 0
+      ) {
+        posX = nuevoX; posY = nuevoY;
+        dibujarLaberinto();
+        if (mapa[posY][posX] === 2) {
+          // Llegó a la meta
+          finalizarJuego();
+        }
+      }
+    }
+
+    function dibujarLaberinto() {
+      laberinto.innerHTML = '';
+      for (let y = 0; y < mapa.length; y++) {
+        for (let x = 0; x < mapa[y].length; x++) {
+          const celda = document.createElement('div');
+          celda.classList.add('celda');
+          if (mapa[y][x] === 0) celda.classList.add('pared');
+          if (mapa[y][x] === 2) {
+            celda.classList.add('meta');
+            celda.textContent = '🚪';
+          }
+          if (x === posX && y === posY) {
+            celda.classList.add('nave');
+            celda.textContent = '🤖';
+          }
+          laberinto.appendChild(celda);
+        }
+      }
+    }
+
+    function iniciarJuego() {
+      isStarted = true;
+      posX = 0; posY = 0;
+      startTime = Date.now();
+      currentRotation = 0;
+      document.getElementById('startModal').style.display = "none";
+      laberinto.style.opacity = "1";
+      laberinto.style.pointerEvents = "auto";
+      document.getElementById('touchControls').style.opacity = "0.8";
+      document.getElementById('touchControls').style.pointerEvents = "auto";
+      dibujarLaberinto();
+      
+      // Iniciar rotación cada 5 segundos
+      if (intervalRotar) clearInterval(intervalRotar);
+      intervalRotar = setInterval(rotarLaberinto, 5000);
+      
+      // Iniciar timer
+      if (intervalTimer) clearInterval(intervalTimer);
+      intervalTimer = setInterval(updateBadge, 100);
+    }
+
+    function finalizarJuego() {
+      isStarted = false;
+      if (intervalRotar) clearInterval(intervalRotar);
+      if (intervalTimer) clearInterval(intervalTimer);
+      const tiempoFinal = ((Date.now() - startTime) / 1000).toFixed(1);
+      document.getElementById('tiempo').value = tiempoFinal;
+      document.getElementById('form').style.display = 'block';
+    }
+
+    function rotarLaberinto() {
+      currentRotation = (currentRotation + 90) % 360;
+      laberinto.style.transform = `rotate(${currentRotation}deg)`;
+      document.getElementById('touchInner').style.transform = `rotate(${-currentRotation}deg)`;
+    }
+
+    // Controles de teclado
+    document.addEventListener('keydown', (e) => {
+      if (!isStarted) return;
+      switch(e.key) {
+        case 'ArrowUp': mover(0, -1); break;
+        case 'ArrowDown': mover(0, 1); break;
+        case 'ArrowLeft': mover(-1, 0); break;
+        case 'ArrowRight': mover(1, 0); break;
+      }
+    });
+
+    // Controles táctiles
+    function addTouch(btnId, dx, dy) {
+      const btn = document.getElementById(btnId);
+      btn.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        mover(dx, dy);
+      });
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        mover(dx, dy);
+      });
+    }
+    addTouch('btnUp', 0, -1);
+    addTouch('btnDown', 0, 1);
+    addTouch('btnLeft', -1, 0);
+    addTouch('btnRight', 1, 0);
+
+    // Botón de comenzar (modal estilo Gravedad Cero)
+    document.getElementById('btnStart').onclick = iniciarJuego;
+
+    // Inicialización
+    dibujarLaberinto();
+    laberinto.style.opacity = "0.5";
+    laberinto.style.pointerEvents = "none";
+    document.getElementById('touchControls').style.opacity = "0.5";
+    document.getElementById('touchControls').style.pointerEvents = "none";
+
+    // Prevenir zoom por doble toque en móviles (iOS/Android)
+    (function preventDoubleTapZoom(){
+      let lastTouchEnd = 0;
+      document.addEventListener('touchend', function(e) {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+          e.preventDefault(); // bloquea el segundo tap que provoca zoom
+        }
+        lastTouchEnd = now;
+      }, { passive: false });
+      // Evitar gesto de pellizco-zoom (iOS)
+      document.addEventListener('gesturestart', function(e){ e.preventDefault(); });
+    })();
+  </script>
+</body>
+</html>

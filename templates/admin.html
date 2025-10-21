@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administración</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      min-height: 100vh;
+    }
+    .container {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+    }
+    h2, h5 { color: #667eea; }
+  </style>
+</head>
+<body class="p-4">
+<div class="container py-4">
+  <h2 class="mb-4">Administración</h2>
+
+  <div class="mb-4 d-flex gap-2">
+    <form method="post" action="/admin/delete-users{{ admin_qs }}" onsubmit="return confirm('¿Borrar TODOS los usuarios? Esta acción no se puede deshacer.');">
+      <button type="submit" class="btn btn-danger btn-sm">Borrar todos los usuarios</button>
+    </form>
+    <form method="post" action="/admin/delete-csv{{ admin_qs }}" onsubmit="return confirm('¿Borrar TODOS los registros de interés (datos.csv)?');">
+      <button type="submit" class="btn btn-warning btn-sm">Borrar todos los registros CSV</button>
+    </form>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Usuarios (usuarios.json)</h5>
+      <div class="table-responsive">
+        <table class="table table-sm table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Puntaje final</th>
+              <th>Trivia</th>
+              <th>Laberinto (seg)</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if usuarios and usuarios|length > 0 %}
+              {% for u in usuarios %}
+              <tr>
+                <td>{{ loop.index0 }}</td>
+                <td>{{ u.nombre or 'Sin nombre' }}</td>
+                <td>{{ (u.puntaje_final * 100) | round(1) }}%</td>
+                <td>{{ u.trivia_puntaje }}/{{ u.trivia_total }}</td>
+                <td>{{ u.laberinto_tiempo }}</td>
+                <td>
+                  <a class="btn btn-outline-primary btn-sm" href="/usuario/{{ loop.index0 }}" target="_blank">Ver</a>
+                  <form method="post" action="/admin/delete-user/{{ loop.index0 }}{{ admin_qs }}" class="d-inline" onsubmit="return confirm('¿Borrar este usuario?');">
+                    <button type="submit" class="btn btn-outline-danger btn-sm">Borrar</button>
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            {% else %}
+              <tr><td colspan="6" class="text-center text-muted">No hay usuarios</td></tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Interés en materiales (datos.csv)</h5>
+      <div class="table-responsive">
+        <table class="table table-sm table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Fecha</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Teléfono</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if interes and interes|length > 0 %}
+              {% for r in interes %}
+              <tr>
+                <td>{{ r.idx }}</td>
+                <td>{{ r.timestamp }}</td>
+                <td>{{ r.nombre }}</td>
+                <td>{{ r.correo }}</td>
+                <td>{{ r.telefono }}</td>
+                <td>
+                  <form method="post" action="/admin/delete-csv/{{ r.idx }}{{ admin_qs }}" class="d-inline" onsubmit="return confirm('¿Borrar este registro?');">
+                    <button type="submit" class="btn btn-outline-danger btn-sm">Borrar</button>
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            {% else %}
+              <tr><td colspan="6" class="text-center text-muted">No hay registros</td></tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container py-3">
+  <a href="/ranking" class="btn btn-secondary">Volver al ranking</a>
+  <a href="/" class="btn btn-link">Inicio</a>
+  {% if k_value %}<span class="badge badge-info">Sesión admin</span>{% endif %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

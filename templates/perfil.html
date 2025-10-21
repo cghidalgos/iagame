@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Mi Perfil - {{ username }}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      min-height: 100vh;
+      padding: 20px 0;
+    }
+    .container {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 1000px;
+    }
+    h2 {
+      color: #667eea;
+    }
+    .stat-card {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 10px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .badge-custom {
+      font-size: 1rem;
+      padding: 8px 15px;
+    }
+  </style>
+</head>
+<body class="p-4">
+  {% include 'partials/loader.html' %}
+  <div class="container">
+    <h2 class="text-center mb-4">Mi Perfil: {{ username }}</h2>
+    
+    {% if historial %}
+    <!-- Resumen general -->
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <div class="stat-card text-center">
+                    <h5>Intentos Totales</h5>
+          <h3 class="text-primary">{{ total_intentos }}</h3>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-card">
+          <h5>Mejor Puntaje</h5>
+          <h3 class="text-success">{{ (mejor_puntaje * 100) | round(1) if mejor_puntaje else 0 }}%</h3>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-card">
+          <h5>Perfil Principal</h5>
+      </div>
+    </div>
+
+    <!-- Gráfica de evolución -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title text-center">Evolución de Puntajes</h5>
+        <canvas id="graficoEvolucion" height="100"></canvas>
+      </div>
+    </div>
+
+    <!-- Tabla de historial -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Historial de Intentos</h5>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>#</th>
+                <th>Puntaje Final</th>
+                <th>Perfil</th>
+                <th>Trivia</th>
+                <th>Laberinto</th>
+                <th>Alan Turing</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for intento in historial %}
+              <tr>
+                <td>{{ loop.index }}</td>
+                <td>
+                  <span class="badge badge-custom
+                    {% if (intento.puntaje_final * 100) >= 80 %}badge-success
+                    {% elif (intento.puntaje_final * 100) >= 60 %}badge-primary
+                    {% else %}badge-warning{% endif %}">
+                    {{ (intento.puntaje_final * 100) | round(1) }}%
+                  </span>
+                </td>
+                <td>{{ intento.tipo_ingeniero }}</td>
+                <td>{{ intento.trivia_puntaje }}/{{ intento.trivia_total }}</td>
+                <td>{{ intento.laberinto_tiempo | round(1) }}s</td>
+                <td>{{ intento.gravedad_puntos | default(0) }} pts</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mejor intento detallado -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Tu Mejor Intento</h5>
+        <div class="row">
+          <div class="col-md-6">
+            <h6>Componentes del Puntaje</h6>
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between">
+                Historia IA
+                <span class="badge badge-success badge-pill">{{ historial[0].porcentajes.trivia | round(1) }}%</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                Laberinto Robot
+                <span class="badge badge-info badge-pill">{{ historial[0].porcentajes.laberinto | round(1) }}%</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                Habilidades IA
+                <span class="badge badge-primary badge-pill">{{ historial[0].porcentajes.habilidades | round(1) }}%</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                Alan Turing Challenge
+                <span class="badge badge-warning badge-pill">{{ historial[0].porcentajes.gravedad | default(0) | round(1) }}%</span>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h6>Tus Mejores Habilidades</h6>
+            <ul class="list-group">
+              {% for hab, (val, msg) in historial[0].evaluaciones.items() %}
+              {% if val >= 7 %}
+              <li class="list-group-item">
+                <strong>{{ hab.replace('_', ' ').capitalize() }}</strong>: {{ val }}/10
+                <small class="text-muted d-block">{{ msg }}</small>
+              </li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% else %}
+    <div class="alert alert-info text-center">
+      <h4>¡Bienvenido!</h4>
+      <p>Aún no tienes intentos registrados. ¡Comienza tu primera evaluación!</p>
+      <a href="/trivia" class="btn btn-primary mt-3">Comenzar Ahora</a>
+    </div>
+    {% endif %}
+
+    <div class="row mt-4">
+      <div class="col-md-6 mb-2">
+        <a href="/ranking" class="btn btn-info btn-block">🏆 Ver Ranking General</a>
+      </div>
+      <div class="col-md-6 mb-2">
+        <a href="/" class="btn btn-secondary btn-block">⬅ Volver al Inicio</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    {% if historial %}
+    // Gráfica de evolución (invertir para mostrar del más antiguo al más reciente)
+    const historialInvertido = {{ historial | reverse | list | tojson }};
+    const intentos = historialInvertido.map((_, i) => 'Intento ' + (i + 1));
+    const puntajes = historialInvertido.map(h => (h.puntaje_final * 100).toFixed(1));
+
+    new Chart(document.getElementById('graficoEvolucion'), {
+      type: 'line',
+      data: {
+        labels: intentos,
+        datasets: [{
+          label: 'Puntaje Final (%)',
+          data: puntajes,
+          backgroundColor: 'rgba(102, 126, 234, 0.2)',
+          borderColor: 'rgba(102, 126, 234, 1)',
+          borderWidth: 3,
+          fill: true,
+          tension: 0.4,
+          pointRadius: 5,
+          pointBackgroundColor: 'rgba(102, 126, 234, 1)'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            title: {
+              display: true,
+              text: 'Puntaje (%)'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return 'Puntaje: ' + context.parsed.y + '%';
+              }
+            }
+          }
+        }
+      }
+    });
+    {% endif %}
+  </script>
+</body>
+</html>
